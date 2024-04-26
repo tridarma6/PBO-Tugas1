@@ -5,7 +5,8 @@ public class Login {
     private static final String CUSTOMER_USERNAME = "customer";
     private static final String CUSTOMER_PASSWORD = "c190605";
     public static void login(){
-
+        String adminName = "Rifki";
+        String customerName = "Tri Dharma";
         Scanner scanner = new Scanner(System.in);
 
         Message.tampilanLogin();
@@ -13,6 +14,7 @@ public class Login {
         int userType = Validation.validationTwoChoice();
         
         if(userType == 1){
+            do{
             CLS.clearScreen();
             Message.headerUsernameDanPassword();
             System.out.println("Masukkan username Anda:");
@@ -21,13 +23,18 @@ public class Login {
             String password = scanner.nextLine();
         if (username.equals(ADMIN_USERNAME) && password.equals(ADMIN_PASSWORD)) {
             CLS.clearScreen();
-            System.out.println("Login admin berhasil!");
+            Message.loggedInGreetingAdmin(adminName);
+            scanner.nextLine();
+            CLS.clearScreen();
+            break;
         } else {
             CLS.clearScreen();
             System.out.println("Username atau password salah!");
-        }
+        }}while(true);
     } else if(userType == 2){
         CLS.clearScreen();
+        // perulangan dowhile ini fungsinya untuk jika username dan password salah , user diminta kembali untuk menginputkan username dan password
+        do{
         Message.headerUsernameDanPassword();
         System.out.println("Masukkan username Anda:");
         String username = scanner.nextLine();
@@ -35,11 +42,14 @@ public class Login {
         String password = scanner.nextLine();
         if (username.equals(CUSTOMER_USERNAME) && password.equals(CUSTOMER_PASSWORD)) {
             CLS.clearScreen();
-            System.out.println("Login customer berhasil!");
+            Message.loggedInGreetingCustomer(customerName);
+            scanner.nextLine();
+            CLS.clearScreen();
+            break;
         } else {
             CLS.clearScreen();
             System.out.println("Username atau password salah!");
-        }
+        }}while(true);
     }else{
         CLS.clearScreen();
     }
