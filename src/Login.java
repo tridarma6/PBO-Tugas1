@@ -35,11 +35,13 @@ public class Login {
             System.out.println("Masukkan password Anda:");
             String password = scanner.nextLine();
         if (username.equals(ADMIN_USERNAME) && password.equals(ADMIN_PASSWORD)) {
-            CLS.clearScreen();
+            // CLS.clearScreen();
+            System.out.println();
             isLogin = true;
             Message.loggedInGreetingAdmin(adminName);
             scanner.nextLine();
             CLS.clearScreen();
+            Input.input();
         } else {
             CLS.clearScreen();
             Message.errorLogin();

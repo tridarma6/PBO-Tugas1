@@ -2,7 +2,7 @@ public class Message {
     public static void tampilanLogin () {
         System.out.println("=====================================================================");
         System.out.println("||                          W E L C O M E                          ||");
-        System.out.println("||                                                                   ");
+        System.out.println("||                                                                 ||");
         System.out.println("||                            LOGIN PAGE                           ||");
         System.out.println("---------------------------------------------------------------------");
         System.out.println("||                      Pilih Tipe User Di bawah                   ||");
