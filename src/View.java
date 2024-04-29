@@ -1,4 +1,4 @@
-public class Message {
+public class View {
     public static void tampilanLogin () {
         System.out.println("=====================================================================");
         System.out.println("||                          W E L C O M E                          ||");
@@ -43,5 +43,19 @@ public class Message {
         System.out.println("---------------------------------------------------------------------");
         System.out.println("||                  Tekan Enter untuk melanjutkan                  ||");
         System.out.println("=====================================================================");
+    }
+
+    public static void showMenu () {
+        System.out.println("=====================================================================");
+        System.out.println("||                            Admin Menu                           ||");
+        System.out.println("---------------------------------------------------------------------");
+        System.out.println("||                 Pilih opsi dengan memasukkan angka              ||");
+        System.out.println("||                                                                 ||");
+        System.out.println("||   [1] Lihat Restoran yang Ada                                   ||");
+        System.out.println("||   [2] Tambahkan Restoran baru                                   ||");
+        System.out.println("||   [3] Hapus Restoran yang Ada                                   ||");
+        System.out.println("||   [0] Kembali ke menu log in                                    ||");
+        System.out.println("=====================================================================");
+        System.out.print("Pilihan Anda: ");
     }
 }

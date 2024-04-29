@@ -11,10 +11,10 @@ class Admin{
     // method untuk menambah restoran
     public void addRestoran(int id, String name, String address){
         Restaurant restaurant = new Restaurant(id, name, address);
-        restaurants.add(restaurant);
+        restaurants.add(restaurant); // Memasukkan instance Restaurant ke dalam ArrayList
         System.out.println("Restoran Berhasil ditambahkan");
     }
-
+    
     //method view semua restaurant
     public void viewRestaurants(){
         if(restaurants.isEmpty()){
@@ -46,25 +46,18 @@ class Admin{
 }
 
 class Input{
+    static Admin admin = new Admin();
     public static void input(){
-    //membuat object admin
-    Admin admin = new Admin();
-
-    //test
-    // admin.addRestoran(1, "Restoran Ayam gepuk", "Jalan gunung");
-    // admin.addRestoran(2, "Restoran Gaco", "Jalan Jimbo");
-
-    Scanner scanner = new Scanner(System.in);
-    int choice;
-
-        System.out.println("\nMenu Admin:");
-        System.out.println("1. Tambah Restoran");
-        System.out.println("2. Lihat Restoran");
-        System.out.println("3. Hapus Restoran");
-        System.out.println("0. Kembali ke menu login");
-        System.out.print("Pilihan Anda: ");
-        choice = Validation.validationFourChoice();
-        switch(choice){
+        //membuat object admin
+        //test
+        // admin.addRestoran(1, "Restoran Ayam gepuk", "Jalan gunung");
+        // admin.addRestoran(2, "Restoran Gaco", "Jalan Jimbo");
+            Scanner scanner = new Scanner(System.in);
+           
+            
+            System.out.print("Pilihan Anda: ");
+            int choice = Validation.validationFourChoice();
+            switch(choice){
             case 1:
             System.out.print("Masukan ID Restoran: ");
             int id = Validation.validationInteger();
@@ -73,17 +66,22 @@ class Input{
             System.out.print("Masukkan Alamat Restoran: ");
             String address = scanner.nextLine();
             admin.addRestoran(id, name, address);
+            input();
             break;
             case 2:
             admin.viewRestaurants();
+            input();
             break;
             case 3:
-            System.out.println("Masukkan ID Restoran yang akan di hapus : ");
+            System.out.println("Masukkan ID Restoran yang akan dihapus : ");
             int idDelete = Validation.validationInteger();
+            admin.deleteRestaurant(idDelete); 
+            input();
             break;
             case 0:
             Login.login();
             break;
         }
+        scanner.close();
     }
 }

@@ -13,8 +13,8 @@ public class Login {
      */
     public static void login(){
         Scanner scanner = new Scanner(System.in);
-
-        Message.tampilanLogin();
+        
+        View.tampilanLogin();
         System.out.print("Masukan pilihan :");
         int userType = Validation.validationTwoChoice();
         
@@ -24,12 +24,14 @@ public class Login {
         } else if(userType == 2) {
             CLS.clearScreen();
             inputCustomer();
+        } else{
+            CLS.clearScreen();
         }
     }
 
     public static void inputAdmin(){
         Scanner scanner = new Scanner(System.in);
-            Message.headerUsernameDanPassword();
+            View.headerUsernameDanPassword();
             System.out.println("Masukkan username Anda:");
             String username = scanner.nextLine();
             System.out.println("Masukkan password Anda:");
@@ -38,13 +40,13 @@ public class Login {
             // CLS.clearScreen();
             System.out.println();
             isLogin = true;
-            Message.loggedInGreetingAdmin(adminName);
+            View.loggedInGreetingAdmin(adminName);
             scanner.nextLine();
             CLS.clearScreen();
             Input.input();
         } else {
             CLS.clearScreen();
-            Message.errorLogin();
+            View.errorLogin();
             scanner.nextLine();
             CLS.clearScreen();
             login();
@@ -53,7 +55,7 @@ public class Login {
 
     public static void inputCustomer(){
         Scanner scanner = new Scanner(System.in);
-            Message.headerUsernameDanPassword();
+            View.headerUsernameDanPassword();
             System.out.println("Masukkan username Anda:");
             String username = scanner.nextLine();
             System.out.println("Masukkan password Anda:");
@@ -61,12 +63,12 @@ public class Login {
         if (username.equals(ADMIN_USERNAME) && password.equals(ADMIN_PASSWORD)) {
             CLS.clearScreen();
             isLogin = true;
-            Message.loggedInGreetingAdmin(adminName);
+            View.loggedInGreetingAdmin(adminName);
             scanner.nextLine();
             CLS.clearScreen();
         } else {
             CLS.clearScreen();
-            Message.errorLogin();
+            View.errorLogin();
             scanner.nextLine();
             CLS.clearScreen();
             login();
