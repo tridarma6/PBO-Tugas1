@@ -61,34 +61,21 @@ public class Validation {
         }
         return nilaiAngka;
     }
-
-        public static String validasiID() {
+    // validasi double
+    public static double validationDouble(){
+        double nilaiAngka = 0.0;
+        boolean valid = false;
         Scanner input = new Scanner(System.in);
-        boolean inputValid = false;
-        String id = null;
-        while (!inputValid) {
-            inputValid = true;
-            id = input.nextLine();
-            if (id.isBlank()) {
-                System.out.println("    ID tidak boleh kosong");
-                inputValid = false;
-            }
-            if (id.length() > 9) {
-                System.out.println("    Maksimal panjang ID adalah 9 huruf.");
-                inputValid = false;
-            }
-            if (id.contains(" ")) {
-                System.out.println("    ID tidak boleh berisi whitespace.");
-                inputValid = false;
-            }
-
-            if (!inputValid) {
-                System.out.println("    Mohon masukkan ID yang benar.");
-                System.out.print("    ID:");
-            } else {
-                id = id.toUpperCase();
+        while(!valid){
+            try{
+                nilaiAngka = input.nextDouble();
+                valid = true; // keluar dari loop jika 
+            }catch(InputMismatchException e){
+                System.out.print("Masukkan tidak valid. Harap masukkan angka :");
+                input.nextLine();
+                return validationDouble();
             }
         }
-        return id;
+        return nilaiAngka;
     }
 }

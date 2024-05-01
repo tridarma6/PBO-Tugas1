@@ -47,6 +47,51 @@ public class View {
         System.out.println("=====================================================================");
     }
 
-   
+    public static void tampilanMenu() {
+        System.out.println("=====================================================================");
+        System.out.println("||                            Admin Menu                           ||");
+        System.out.println("---------------------------------------------------------------------");
+        System.out.println("||                 Pilih opsi dengan memasukkan angka              ||");
+        System.out.println("||                                                                 ||");
+        System.out.println("||   [1] Tambahkan Restoran baru                                   ||");
+        System.out.println("||   [2] Lihat Restoran yang Ada                                   ||");
+        System.out.println("||   [3] Hapus Restoran yang Ada                                   ||");
+        System.out.println("||   [0] Kembali ke menu log in                                    ||");
+        System.out.println("=====================================================================");
+        System.out.print("Pilihan Anda: ");
+    }
 
+    public static void tampilanMenuCustomer() {
+        System.out.println("=====================================================================");
+        System.out.println("||                           Customer Menu                         ||");
+        System.out.println("---------------------------------------------------------------------");
+        System.out.println("||                 Pilih opsi dengan memasukkan angka              ||");
+        System.out.println("||                                                                 ||");
+        System.out.println("||   [1] Lihat restaurant                                          ||");
+        System.out.println("||   [2] Buat pesanan                                              ||");
+        System.out.println("||   [3] Lihat Pesanan                                             ||");
+        System.out.println("||   [0] Kembali ke menu log in                                    ||");
+        System.out.println("=====================================================================");
+        System.out.print("Pilihan Anda: ");
+    }
+
+    public static void tambahRestoranHeader() {
+        System.out.println("=====================================================================");
+        System.out.println("||                          TAMBAH RESTORAN                        ||");
+        System.out.println("||                            Admin Menu                           ||");
+        System.out.println("---------------------------------------------------------------------");
+        System.out.println("||       Mohon masukkan restoran baru dengan informasi di bawah    ||");
+        System.out.println("||           ID Restoran, Nama Restoran, Alamat Restoran           ||");
+        System.out.println("=====================================================================");
+    }
+    public static void addMenuAgain(){
+        System.out.println("---------------------------------------------------------------------");
+        System.out.println("||                   Restoran berhasil ditambahkan!                ||");
+        System.out.println("---------------------------------------------------------------------");
+        System.out.println("||                  Lanjutkan menambahkan restoran?                ||");
+        System.out.println("||                                                                 ||");
+        System.out.println("||                  1. Ya                   2. Tidak               ||");
+        System.out.println("=====================================================================");
+        System.out.print("Masukan pilihan berupa angka: ");
+    }
 }
