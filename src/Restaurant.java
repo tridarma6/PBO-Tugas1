@@ -18,6 +18,7 @@ public class Restaurant {
         this.id = nextID;
         nextID++;
     }
+
     public String getName() {
         return name;
     }
@@ -26,6 +27,13 @@ public class Restaurant {
     }
     public int getId() {
         return id;
+    }
+    public ArrayList<Food> getFoods() {
+        return foods;
+    }
+
+    public ArrayList<Drink> getDrinks() {
+        return drinks;
     }
     public void addFood(Food food){
         foods.add(food);

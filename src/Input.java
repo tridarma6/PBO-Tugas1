@@ -1,131 +1,126 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 class Input{
     private static Admin admin = new Admin();
+    private ArrayList<Restaurant> restaurants;
+
+    public Input(){
+        this.restaurants = new ArrayList<>();
+    }
     
     public static void input(){
         //membuat object admin
         //test
         // admin.addRestoran(1, "Restoran Ayam gepuk", "Jalan gunung");
         // admin.addRestoran(2, "Restoran Gaco", "Jalan Jimbo");
-            Scanner scanner = new Scanner(System.in);
-            tampilanMenu();
-            int choice;
-            choice = Validation.validationFourChoice();
-            switch(choice){
+        Scanner scanner = new Scanner(System.in);
+        View.tampilanMenu();
+        int choice;
+        choice = Validation.validationFourChoice();
+        switch(choice){
             case 1:
-            CLS.clearScreen();
-            tambahRestoranHeader();
-            inputAddRestoran();
-            CLS.clearScreen();
-            input();
-            break;
+                Clear.screen();
+                View.tambahRestoranHeader();
+                Admin.inputAddRestoran();
+                Clear.screen();
+                input();
+                break;
             case 2:
-            admin.viewRestaurants();
-            scanner.nextLine();
-            CLS.clearScreen();
-            input();
-            break;
+                admin.viewRestaurants();
+                scanner.nextLine();
+                Clear.screen();
+                input();
+                break;
             case 3:
-            System.out.println("Masukkan ID Restoran yang akan dihapus : ");
-            int idDelete = Validation.validationInteger();
-            admin.deleteRestaurant(idDelete);
-            scanner.nextLine();
-            CLS.clearScreen(); 
-            input();
-            break;
+                System.out.println("Masukkan ID Restoran yang akan dihapus : ");
+                int idDelete = Validation.validationInteger();
+                admin.deleteRestaurant(idDelete);
+                scanner.nextLine();
+                Clear.screen(); 
+                input();
+                break;
             case 0:
-            CLS.clearScreen();
-            Login.login();
-            break;
+                Clear.screen();
+                Login.login();
+                break;
         }
         scanner.close();
+    }
+    
+    public boolean addMenu(Restaurant restaurant) {
+        
+        Scanner scanner = new Scanner(System.in);
+        int choice;
+        System.out.println("\nMenu:");
+        System.out.println("1. Tambah Makanan");
+        System.out.println("2. Tambah Minuman");
+        System.out.println("0. Selesai");
+        System.out.print("Pilihan Anda: ");
+        choice = Validation.validationInteger();
+
+        switch (choice) {
+            case 1:
+                // Tambah makanan
+                
+                System.out.print("Masukkan Nama Makanan: ");
+                String foodName = scanner.nextLine();
+                System.out.print("Masukkan Harga Makanan: ");
+                double foodPrice = Validation.validationDouble();
+                Food food = new Food(foodName, foodPrice);
+                restaurant.addFood(food);
+                break;
+            case 2:
+                scanner.nextLine(); // Membuang newline character
+                System.out.print("Masukkan Nama Minuman: ");
+                String drinkName = scanner.nextLine();
+                System.out.print("Masukkan Harga Minuman: ");
+                double drinkPrice = Validation.validationDouble();
+                Drink drink = new Drink(drinkName, drinkPrice);
+                restaurant.addDrink(drink);
+                break;
+            case 0:
+                
+                // Selesai
+                if (restaurant.getFoods().isEmpty() && restaurant.getDrinks().isEmpty()) {
+                    System.out.println("Tidak dapat menambah restoran tanpa menu.");
+                    return false;
+                }
+                break;
+            default:
+                System.out.println("Pilihan tidak valid.");
+        }
+        
+        return true;
     }
 
     public static void customerInput(){
         Scanner scanner = new Scanner(System.in);
-        tampilanMenuCustomer();
+        View.tampilanMenuCustomer();
         int choice = Validation.validationFourChoice();
         switch (choice) {
             case 1:
-                CLS.clearScreen();
+                Clear.screen();
                 break;
             case 2:
-                CLS.clearScreen();
+                Clear.screen();
                 break;
             case 3:
-                CLS.clearScreen();
+                Clear.screen();
             case 0:
-                CLS.clearScreen();
+                Clear.screen();
             default:
                 break;
         }
     }
-
-    public static void inputAddRestoran(){
-        CLS.clearScreen();
-        tambahRestoranHeader();
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Masukkan Nama Restoran: ");
-        String name = scanner.nextLine();
-        System.out.print("Masukkan Alamat Restoran: ");
-        String address = scanner.nextLine();
-        admin.addRestoran(name, address);
-        scanner.close();
-    }
-
-    public static void tampilanMenu() {
-        System.out.println("=====================================================================");
-        System.out.println("||                            Admin Menu                           ||");
-        System.out.println("---------------------------------------------------------------------");
-        System.out.println("||                 Pilih opsi dengan memasukkan angka              ||");
-        System.out.println("||                                                                 ||");
-        System.out.println("||   [1] Tambahkan Restoran baru                                   ||");
-        System.out.println("||   [2] Lihat Restoran yang Ada                                   ||");
-        System.out.println("||   [3] Hapus Restoran yang Ada                                   ||");
-        System.out.println("||   [0] Kembali ke menu log in                                    ||");
-        System.out.println("=====================================================================");
-        System.out.print("Pilihan Anda: ");
-    }
-    public static void tampilanMenuCustomer() {
-        System.out.println("=====================================================================");
-        System.out.println("||                           Customer Menu                         ||");
-        System.out.println("---------------------------------------------------------------------");
-        System.out.println("||                 Pilih opsi dengan memasukkan angka              ||");
-        System.out.println("||                                                                 ||");
-        System.out.println("||   [1] Lihat restaurant                                          ||");
-        System.out.println("||   [2] Buat pesanan                                              ||");
-        System.out.println("||   [3] Lihat Pesanan                                             ||");
-        System.out.println("||   [0] Kembali ke menu log in                                    ||");
-        System.out.println("=====================================================================");
-        System.out.print("Pilihan Anda: ");
-    }
-
-    public static void tambahRestoranHeader() {
-        System.out.println("=====================================================================");
-        System.out.println("||                          TAMBAH RESTORAN                        ||");
-        System.out.println("||                            Admin Menu                           ||");
-        System.out.println("---------------------------------------------------------------------");
-        System.out.println("||       Mohon masukkan restoran baru dengan informasi di bawah    ||");
-        System.out.println("||           ID Restoran, Nama Restoran, Alamat Restoran           ||");
-        System.out.println("=====================================================================");
-    }
-
     public static void apakahTambahRestoranLagi() {
-        CLS.clearScreen();
-        System.out.println("---------------------------------------------------------------------");
-        System.out.println("||                   Restoran berhasil ditambahkan!                ||");
-        System.out.println("---------------------------------------------------------------------");
-        System.out.println("||                  Lanjutkan menambahkan restoran?                ||");
-        System.out.println("||                                                                 ||");
-        System.out.println("||                  1. Ya                   2. Tidak               ||");
-        System.out.println("=====================================================================");
-        System.out.print("Masukan pilihan berupa angka: ");
+        Clear.screen();
+        View.addMenuAgain();
         int choice = Validation.validationTwoChoice();
         if(choice == 1){
-            inputAddRestoran();
+            Admin.inputAddRestoran();
         }else{
-            CLS.clearScreen();
+             Clear.screen();
             input();
         }
     }

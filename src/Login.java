@@ -19,13 +19,13 @@ public class Login {
         int userType = Validation.validationTwoChoice();
         
         if(userType == 1){
-            CLS.clearScreen();
+             Clear.screen();
             inputAdmin();
         } else if(userType == 2) {
-            CLS.clearScreen();
+             Clear.screen();
             inputCustomer();
         } else{
-            CLS.clearScreen();
+             Clear.screen();
         }
         scanner.close();
     }
@@ -38,18 +38,18 @@ public class Login {
             System.out.print("Masukkan password Anda: ");
             String password = scanner.nextLine();
         if (username.equals(ADMIN_USERNAME) && password.equals(ADMIN_PASSWORD)) {
-            // CLS.clearScreen();
+            //  Clear.screen();
             System.out.println();
             isLogin = true;
             View.loggedInGreetingAdmin(adminName);
             scanner.nextLine();
-            CLS.clearScreen();
+             Clear.screen();
             Input.input();
         } else {
-            CLS.clearScreen();
+             Clear.screen();
             View.errorLogin();
             scanner.nextLine();
-            CLS.clearScreen();
+             Clear.screen();
             login();
         }
 
@@ -66,16 +66,16 @@ public class Login {
         System.out.print("Masukkan password Anda: ");
         String password = scanner.nextLine();
         if (username.equals(CUSTOMER_USERNAME) && password.equals(CUSTOMER_PASSWORD)) {
-            CLS.clearScreen();
+             Clear.screen();
             isLogin = true;
             View.loggedInGreetingCustomer(customerName);
             scanner.nextLine();
-            CLS.clearScreen();
+             Clear.screen();
         } else {
-            CLS.clearScreen();
+             Clear.screen();
             View.errorLogin();
             scanner.nextLine();
-            CLS.clearScreen();
+             Clear.screen();
             login();
         }
 

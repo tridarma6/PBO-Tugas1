@@ -1,5 +1,4 @@
 import java.util.*;
-import java.util.InputMismatchException;
 
 public class Validation {
     //validasi angka
@@ -58,6 +57,23 @@ public class Validation {
                 System.out.print("Masukkan tidak valid. Harap masukkan angka : ");
                 input.nextLine();
                 return validationFourChoice();
+            }
+        }
+        return nilaiAngka;
+    }
+    // validasi double
+    public static double validationDouble(){
+        double nilaiAngka = 0.0;
+        boolean valid = false;
+        Scanner input = new Scanner(System.in);
+        while(!valid){
+            try{
+                nilaiAngka = input.nextDouble();
+                valid = true; // keluar dari loop jika 
+            }catch(InputMismatchException e){
+                System.out.print("Masukkan tidak valid. Harap masukkan angka :");
+                input.nextLine();
+                return validationDouble();
             }
         }
         return nilaiAngka;
