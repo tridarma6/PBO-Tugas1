@@ -56,11 +56,11 @@ public class Login {
 
     public static void inputCustomer(){
         Scanner scanner = new Scanner(System.in);
-            View.headerUsernameDanPassword();
-            System.out.print("Masukkan username Anda: ");
-            String username = scanner.nextLine();
-            System.out.print("Masukkan password Anda: ");
-            String password = scanner.nextLine();
+        View.headerUsernameDanPassword();
+        System.out.print("Masukkan username Anda: ");
+        String username = scanner.nextLine();
+        System.out.print("Masukkan password Anda: ");
+        String password = scanner.nextLine();
         if (username.equals(ADMIN_USERNAME) && password.equals(ADMIN_PASSWORD)) {
             CLS.clearScreen();
             isLogin = true;
