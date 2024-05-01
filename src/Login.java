@@ -4,60 +4,75 @@ public class Login {
     private static final String ADMIN_PASSWORD = "a190605";
     private static final String CUSTOMER_USERNAME = "customer";
     private static final String CUSTOMER_PASSWORD = "c190605";
-    public static void login(){
-        String adminName = "Rifki";
-        String customerName = "Tri Darma";
-        Scanner scanner = new Scanner(System.in);
+    private static final String adminName = "Rifki";
+    private static final String customerName = "Tri Dharma";
+    private static boolean isLogin = false;
 
-        Message.tampilanLogin();
+    /**
+     * 
+     */
+    public static void login(){
+        Scanner scanner = new Scanner(System.in);
+        
+        View.tampilanLogin();
         System.out.print("Masukan pilihan :");
         int userType = Validation.validationTwoChoice();
         
         if(userType == 1){
-            do{
             CLS.clearScreen();
-            Message.headerUsernameDanPassword();
-            System.out.println("Masukkan username Anda:");
+            inputAdmin();
+        } else if(userType == 2) {
+            CLS.clearScreen();
+            inputCustomer();
+        } else{
+            CLS.clearScreen();
+        }
+        scanner.close();
+    }
+
+    public static void inputAdmin(){
+        Scanner scanner = new Scanner(System.in);
+            View.headerUsernameDanPassword();
+            System.out.print("Masukkan username Anda: ");
             String username = scanner.nextLine();
-            System.out.println("Masukkan password Anda:");
+            System.out.print("Masukkan password Anda: ");
+            String password = scanner.nextLine();
+        if (username.equals(ADMIN_USERNAME) && password.equals(ADMIN_PASSWORD)) {
+            // CLS.clearScreen();
+            System.out.println();
+            isLogin = true;
+            View.loggedInGreetingAdmin(adminName);
+            scanner.nextLine();
+            CLS.clearScreen();
+            Input.input();
+        } else {
+            CLS.clearScreen();
+            View.errorLogin();
+            scanner.nextLine();
+            CLS.clearScreen();
+            login();
+        }
+    }
+
+    public static void inputCustomer(){
+        Scanner scanner = new Scanner(System.in);
+            View.headerUsernameDanPassword();
+            System.out.print("Masukkan username Anda: ");
+            String username = scanner.nextLine();
+            System.out.print("Masukkan password Anda: ");
             String password = scanner.nextLine();
         if (username.equals(ADMIN_USERNAME) && password.equals(ADMIN_PASSWORD)) {
             CLS.clearScreen();
-            Message.loggedInGreetingAdmin(adminName);
+            isLogin = true;
+            View.loggedInGreetingAdmin(adminName);
             scanner.nextLine();
             CLS.clearScreen();
-            break;
         } else {
             CLS.clearScreen();
-            System.out.println("Username atau password salah!");
-        }}while(true);
-    } else if(userType == 2){
-        CLS.clearScreen();
-        // perulangan dowhile ini fungsinya untuk jika username dan password salah , user diminta kembali untuk menginputkan username dan password
-        do{
-        Message.headerUsernameDanPassword();
-        System.out.println("Masukkan username Anda:");
-        String username = scanner.nextLine();
-        System.out.println("Masukkan password Anda:");
-        String password = scanner.nextLine();
-        if (username.equals(CUSTOMER_USERNAME) && password.equals(CUSTOMER_PASSWORD)) {
-            CLS.clearScreen();
-            Message.loggedInGreetingCustomer(customerName);
+            View.errorLogin();
             scanner.nextLine();
             CLS.clearScreen();
-            break;
-        } else {
-            CLS.clearScreen();
-            System.out.println("Username atau password salah!");
-        }}while(true);
-    }else if(userType == 0){
-        CLS.clearScreen();
-        System.out.println(
-                        "\n||==========================================================||" + 
-                        "\n||                        Thank You :>                      ||" + 
-                        "\n||==========================================================||"  
-                    );
-    }
-
+            login();
+        }
     }
 }

@@ -2,12 +2,10 @@ public class Restaurant {
     
     String name;
     String address;
-    Menu menu;
     int id;
-    public Restaurant(String name, String address, Menu menu, int id) {
+    public Restaurant(int id, String name, String address) {
         this.name = name;
         this.address = address;
-        this.menu = menu;
         this.id = id;
     }
     public String getName() {
@@ -15,9 +13,6 @@ public class Restaurant {
     }
     public String getAddress() {
         return address;
-    }
-    public Menu getMenu() {
-        return menu;
     }
     public int getId() {
         return id;
