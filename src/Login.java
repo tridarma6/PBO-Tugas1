@@ -6,7 +6,7 @@ public class Login {
     private static final String CUSTOMER_PASSWORD = "c190605";
     public static void login(){
         String adminName = "Rifki";
-        String customerName = "Tri Dharma";
+        String customerName = "Tri Darma";
         Scanner scanner = new Scanner(System.in);
 
         Message.tampilanLogin();
@@ -50,8 +50,13 @@ public class Login {
             CLS.clearScreen();
             System.out.println("Username atau password salah!");
         }}while(true);
-    }else{
+    }else if(userType == 0){
         CLS.clearScreen();
+        System.out.println(
+                        "\n||==========================================================||" + 
+                        "\n||                        Thank You :>                      ||" + 
+                        "\n||==========================================================||"  
+                    );
     }
 
     }
