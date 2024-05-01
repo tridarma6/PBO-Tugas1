@@ -8,16 +8,16 @@ public class Validation {
         boolean valid = false;
         Scanner input = new Scanner(System.in);
         while(!valid){
-        try{
-             nilaiAngka = input.nextInt();
-             valid = true; // keluar dari loop jika 
-        }catch(InputMismatchException e){
-            System.out.print("Masukkan tidak valid. Harap masukkan angka :");
-            input.nextLine();
-            return validationInteger();
+            try{
+                nilaiAngka = input.nextInt();
+                valid = true; // keluar dari loop jika 
+            }catch(InputMismatchException e){
+                System.out.print("Masukkan tidak valid. Harap masukkan angka :");
+                input.nextLine();
+                return validationInteger();
+            }
         }
-    }
-    return nilaiAngka;
+        return nilaiAngka;
     }
     //validasi range 2 angka
     public static int validationTwoChoice(){
