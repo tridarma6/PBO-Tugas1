@@ -1,16 +1,6 @@
 import java.util.*;
-public class Login {
-    private static final String ADMIN_USERNAME = "admin";
-    private static final String ADMIN_PASSWORD = "a190605";
-    private static final String CUSTOMER_USERNAME = "customer";
-    private static final String CUSTOMER_PASSWORD = "c190605";
-    private static final String adminName = "Rifki";
-    private static final String customerName = "Tri Dharma";
-    private static boolean isLogin = false;
+public class Login extends Account{
 
-    /**
-     * 
-     */
     public static void login(){
         Scanner scanner = new Scanner(System.in);
         
@@ -40,7 +30,6 @@ public class Login {
         if (username.equals(ADMIN_USERNAME) && password.equals(ADMIN_PASSWORD)) {
             //  Clear.screen();
             System.out.println();
-            isLogin = true;
             View.loggedInGreetingAdmin(adminName);
             scanner.nextLine();
              Clear.screen();
@@ -67,7 +56,6 @@ public class Login {
         String password = scanner.nextLine();
         if (username.equals(CUSTOMER_USERNAME) && password.equals(CUSTOMER_PASSWORD)) {
              Clear.screen();
-            isLogin = true;
             View.loggedInGreetingCustomer(customerName);
             scanner.nextLine();
              Clear.screen();

@@ -4,11 +4,11 @@ class Admin{
     private static ArrayList<Restaurant> restaurants; 
  
     //constructor Admin
-     public Admin(){
-         this.restaurants = new ArrayList<>();
-     }
+    public Admin(){
+        this.restaurants = new ArrayList<>();
+    }
  
-     public static void inputAddRestoran(){
+    public static void inputAddRestoran(){
         Clear.screen();
         View.tambahRestoranHeader();
         Scanner scanner = new Scanner(System.in);
@@ -20,13 +20,13 @@ class Admin{
         scanner.close();
     }
      // method untuk menambah restoran
-     public static void addRestoran(String name, String address){
+    public static void addRestoran(String name, String address){
         Scanner scanner = new Scanner(System.in);
         ArrayList<Food> food = new ArrayList<>();
         ArrayList<Drink> drink = new ArrayList<>();
-         Restaurant restaurant = new Restaurant(name, address, food, drink);
-         Input inputMenu = new Input();
-         boolean addMenuDone = inputMenu.addMenu(restaurant);
+        Restaurant restaurant = new Restaurant(name, address, food, drink);
+        Input inputMenu = new Input();
+        boolean addMenuDone = inputMenu.addMenu(restaurant);
         if (!addMenuDone) {
             System.out.println("Tidak dapat menambah restoran tanpa menu.");
             System.out.println("Tekan enter untuk lanjut...");
