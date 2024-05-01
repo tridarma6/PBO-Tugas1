@@ -1,11 +1,7 @@
 import java.util.ArrayList;
-<<<<<<< HEAD
-public class Restaurant { 
-=======
 
 public class Restaurant {
     
->>>>>>> 364a5f43efe247ca0e2ae91f4ffa507bc3ae4468
     String name;
     String address;
     int id;
