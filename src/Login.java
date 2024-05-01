@@ -32,9 +32,9 @@ public class Login {
     public static void inputAdmin(){
         Scanner scanner = new Scanner(System.in);
             View.headerUsernameDanPassword();
-            System.out.println("Masukkan username Anda:");
+            System.out.print("Masukkan username Anda: ");
             String username = scanner.nextLine();
-            System.out.println("Masukkan password Anda:");
+            System.out.print("Masukkan password Anda: ");
             String password = scanner.nextLine();
         if (username.equals(ADMIN_USERNAME) && password.equals(ADMIN_PASSWORD)) {
             // CLS.clearScreen();
@@ -56,9 +56,9 @@ public class Login {
     public static void inputCustomer(){
         Scanner scanner = new Scanner(System.in);
             View.headerUsernameDanPassword();
-            System.out.println("Masukkan username Anda:");
+            System.out.print("Masukkan username Anda: ");
             String username = scanner.nextLine();
-            System.out.println("Masukkan password Anda:");
+            System.out.print("Masukkan password Anda: ");
             String password = scanner.nextLine();
         if (username.equals(ADMIN_USERNAME) && password.equals(ADMIN_PASSWORD)) {
             CLS.clearScreen();
