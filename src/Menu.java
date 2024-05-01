@@ -1,47 +1,27 @@
 public class Menu {
     
-    String food;
-    String drink;
-    double priceFood;
-    double priceDrink;
+    String name;
+    double price;
     
-    public Menu(String food, String drink, double priceFood, double priceDrink) {
-        this.food = food;
-        this.drink = drink;
-        this.priceFood = priceFood;
-        this.priceDrink = priceDrink;
+    public Menu(String name, double price) {
+        this.name = name;
+        this.price = price;
     }
 
-    public String getFood() {
-        return food;
+    public String getName() {
+        return name;
     }
 
-    public void setFood(String food) {
-        this.food = food;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getDrink() {
-        return drink;
+    public double getPrice() {
+        return price;
     }
 
-    public void setDrink(String drink) {
-        this.drink = drink;
-    }
-
-    public double getPriceFood() {
-        return priceFood;
-    }
-
-    public void setPriceFood(double priceFood) {
-        this.priceFood = priceFood;
-    }
-
-    public double getPriceDrink() {
-        return priceDrink;
-    }
-
-    public void setPriceDrink(double priceDrink) {
-        this.priceDrink = priceDrink;
+    public void setPrice(double price) {
+        this.price = price;
     }
 
     

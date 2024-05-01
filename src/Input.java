@@ -53,6 +53,7 @@ class Input{
         System.out.print("Masukkan Alamat Restoran: ");
         String address = scanner.nextLine();
         admin.addRestoran(id, name, address);
+        scanner.close();
     }
 
     public static void tampilanMenu() {

@@ -27,6 +27,7 @@ public class Login {
         } else{
             CLS.clearScreen();
         }
+        scanner.close();
     }
 
     public static void inputAdmin(){
@@ -51,19 +52,23 @@ public class Login {
             CLS.clearScreen();
             login();
         }
+
+
+
+        scanner.close();
     }
 
     public static void inputCustomer(){
         Scanner scanner = new Scanner(System.in);
-            View.headerUsernameDanPassword();
-            System.out.print("Masukkan username Anda: ");
-            String username = scanner.nextLine();
-            System.out.print("Masukkan password Anda: ");
-            String password = scanner.nextLine();
-        if (username.equals(ADMIN_USERNAME) && password.equals(ADMIN_PASSWORD)) {
+        View.headerUsernameDanPassword();
+        System.out.print("Masukkan username Anda: ");
+        String username = scanner.nextLine();
+        System.out.print("Masukkan password Anda: ");
+        String password = scanner.nextLine();
+        if (username.equals(CUSTOMER_USERNAME) && password.equals(CUSTOMER_PASSWORD)) {
             CLS.clearScreen();
             isLogin = true;
-            View.loggedInGreetingAdmin(adminName);
+            View.loggedInGreetingCustomer(customerName);
             scanner.nextLine();
             CLS.clearScreen();
         } else {
@@ -73,5 +78,10 @@ public class Login {
             CLS.clearScreen();
             login();
         }
+
+
+
+
+        scanner.close();
     }
 }
