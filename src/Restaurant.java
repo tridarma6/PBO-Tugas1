@@ -1,5 +1,5 @@
-public class Restaurant {
-    
+import java.util.ArrayList;
+public class Restaurant { 
     String name;
     String address;
     int id;
