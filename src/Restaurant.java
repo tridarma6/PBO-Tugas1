@@ -8,12 +8,15 @@ public class Restaurant {
     public ArrayList<Food> foods;
     public ArrayList<Drink> drinks;
 
-    public Restaurant(int id, String name, String address, ArrayList<Food> foods, ArrayList<Drink> drinks) {
+    private static int nextID = 1;
+
+    public Restaurant(String name, String address, ArrayList<Food> foods, ArrayList<Drink> drinks) {
         this.name = name;
         this.address = address;
-        this.id = id;
         this.foods = foods;
         this.drinks = drinks;
+        this.id = nextID;
+        nextID++;
     }
     public String getName() {
         return name;

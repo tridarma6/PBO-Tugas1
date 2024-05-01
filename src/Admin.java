@@ -8,10 +8,10 @@ class Admin{
      }
  
      // method untuk menambah restoran
-     public void addRestoran(int id, String name, String address){
+     public void addRestoran(String name, String address){
         ArrayList<Food> food = new ArrayList<>();
         ArrayList<Drink> drink = new ArrayList<>();
-         Restaurant restaurant = new Restaurant(id, name, address, food, drink);
+         Restaurant restaurant = new Restaurant(name, address, food, drink);
          restaurants.add(restaurant);
          System.out.println("Restoran Berhasil ditambahkan");
          Input.apakahTambahRestoranLagi();
