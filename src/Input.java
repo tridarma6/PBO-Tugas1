@@ -42,17 +42,35 @@ class Input{
         scanner.close();
     }
 
+    public static void customerInput(){
+        Scanner scanner = new Scanner(System.in);
+        tampilanMenuCustomer();
+        int choice = Validation.validationFourChoice();
+        switch (choice) {
+            case 1:
+                CLS.clearScreen();
+                break;
+            case 2:
+                CLS.clearScreen();
+                break;
+            case 3:
+                CLS.clearScreen();
+            case 0:
+                CLS.clearScreen();
+            default:
+                break;
+        }
+    }
+
     public static void inputAddRestoran(){
         CLS.clearScreen();
         tambahRestoranHeader();
         Scanner scanner = new Scanner(System.in);
-        System.out.print("Masukan ID Restoran: ");
-        int id = Validation.validationInteger();
         System.out.print("Masukkan Nama Restoran: ");
         String name = scanner.nextLine();
         System.out.print("Masukkan Alamat Restoran: ");
         String address = scanner.nextLine();
-        admin.addRestoran(id, name, address);
+        admin.addRestoran(name, address);
         scanner.close();
     }
 
@@ -65,6 +83,19 @@ class Input{
         System.out.println("||   [1] Tambahkan Restoran baru                                   ||");
         System.out.println("||   [2] Lihat Restoran yang Ada                                   ||");
         System.out.println("||   [3] Hapus Restoran yang Ada                                   ||");
+        System.out.println("||   [0] Kembali ke menu log in                                    ||");
+        System.out.println("=====================================================================");
+        System.out.print("Pilihan Anda: ");
+    }
+    public static void tampilanMenuCustomer() {
+        System.out.println("=====================================================================");
+        System.out.println("||                           Customer Menu                         ||");
+        System.out.println("---------------------------------------------------------------------");
+        System.out.println("||                 Pilih opsi dengan memasukkan angka              ||");
+        System.out.println("||                                                                 ||");
+        System.out.println("||   [1] Lihat restaurant                                          ||");
+        System.out.println("||   [2] Buat pesanan                                              ||");
+        System.out.println("||   [3] Lihat Pesanan                                             ||");
         System.out.println("||   [0] Kembali ke menu log in                                    ||");
         System.out.println("=====================================================================");
         System.out.print("Pilihan Anda: ");
