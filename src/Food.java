@@ -1,13 +1,14 @@
 public class Food extends Menu{
-    int id;
+    int no;
     private static int nextID = 1;
     public Food(String name, double price) {
-        super(name, price);
-        this.id = nextID;
+        super(name, price, id);
+        this.no = nextID;
+        Menu.id = nextID;
         nextID++; 
     }
     public int getID(){
-        return this.id;
+        return this.no;
     }
 
     public String getName(){
