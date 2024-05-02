@@ -54,10 +54,13 @@ class Input{
                 customerInput();
                 break;
             case 3:
-
+                Customer.checkOrder();
+                scanner.nextLine();
+                customerInput();
                 break;
             case 0:
-
+                Clear.screen();
+                Login.login();
                 break;
             default:
                 break;

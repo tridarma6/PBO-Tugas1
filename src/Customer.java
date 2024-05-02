@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.Scanner;
 
 public class Customer {
@@ -59,7 +60,7 @@ public class Customer {
     }
 
     private static void displayOrders() {
-        System.out.println("Pesanan:");
+        System.out.println("Pesanan :");
         int totalPrice = 0;
         for (PurchaseOrders purchase : purchaseOrders) {
             System.out.println("Nama Restaurant: " + purchase.getRestaurantName() + ", Menu: " + purchase.getMenu() + ", Price: " + purchase.getPrice() + ", Jumlah: " + purchase.getQuantity() + ", SubTotal: " + purchase.getSubPrice());
@@ -68,7 +69,16 @@ public class Customer {
         System.out.println("Total Harga: " + totalPrice);
     }
     
-
+    public static void checkOrder(){
+        if(!purchaseOrders.isEmpty()){
+            Random random = new Random();
+            System.out.println("Nama :" + Account.customerName);
+            System.out.println("Jarak :" + random.nextInt(1000) + " meter");
+            displayOrders();
+        }else{
+            System.out.println("Tidak terdapat data order, pesan terlebih dahulu ke menu tambah pesanan");
+        }
+    }
     public static void viewRestaurants() {
         if (Admin.restaurants.isEmpty()) {
             System.out.println("Tidak ada restoran yang tersedia.");
