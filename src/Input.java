@@ -9,16 +9,19 @@ class Input{
         choice = Validation.validationFourChoice();
         switch(choice){
             case 1:
+                Clear.screen();
                 View.tambahRestoranHeader();
                 Admin.inputAddRestoran();
                 inputAdmin();
                 break;
             case 2:
+                Clear.screen();
                 Admin.viewRestaurants();
                 scanner.nextLine();
                 inputAdmin();
                 break;
             case 3:
+                Clear.screen();
                 System.out.println("Masukkan ID Restoran yang akan dihapus : ");
                 int idDelete = Validation.validationInteger();
                 Admin.deleteRestaurant(idDelete);
@@ -26,6 +29,7 @@ class Input{
                 inputAdmin();
                 break;
             case 0:
+                Clear.screen();
                 Login.login();
                 break;
         }
@@ -62,8 +66,10 @@ class Input{
         View.addRestorantAgain();
         int choice = Validation.validationTwoChoice();
         if(choice == 1){
+            Clear.screen();
             Admin.inputAddRestoran();
         }else{
+            Clear.screen();
             inputAdmin();
         }
     }

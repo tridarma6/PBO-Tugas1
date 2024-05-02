@@ -41,15 +41,19 @@ class Admin{
         if (restaurants.isEmpty()) {
             System.out.println("Tidak ada restoran yang tersedia.");
         } else {
-            System.out.println("Daftar Restoran:");
+            System.out.println("=====================================================================");
+            System.out.println("||                           DAFTAR RESTORAN                       ||");
+            System.out.println("---------------------------------------------------------------------");
+            System.out.println("|| ID       |             NAMA RESTORAN            |      ALAMAT   ||");
+            System.out.println("---------------------------------------------------------------------");
             for (Restaurant restaurant : restaurants) {
-                System.out.println("ID: " + restaurant.getId() + ", Nama: " + restaurant.getName() + ", Alamat: " + restaurant.getAddress());
+                System.out.printf("|| %-9s| %-37s| %-14s||\n", restaurant.getId(), restaurant.getName(),restaurant.getAddress() );
             }
+            View.restoFooter();
 
-            // Meminta input pengguna untuk memilih restoran
-            Scanner scanner = new Scanner(System.in);
             System.out.print("Masukkan ID Restoran yang ingin dilihat menu: ");
-            int chosenRestaurantId = scanner.nextInt();
+            int chosenRestaurantId = Validation.validationInteger();
+            Clear.screen();
 
             // Cari restoran yang dipilih oleh pengguna
             Restaurant chosenRestaurant = null;
@@ -62,19 +66,42 @@ class Admin{
 
             // Tampilkan menu jika restoran ditemukan
             if (chosenRestaurant != null) {
-                System.out.println("Menu di Restoran " + chosenRestaurant.getName() + ":");
-                ArrayList<Food> foods = chosenRestaurant.getFoods();
-                ArrayList<Drink> drinks = chosenRestaurant.getDrinks();
+                System.out.println("=====================================================================");
+                System.out.println("||                             LIHAT MENU                          ||");
+                System.out.printf("|| Restoran : %-52s ||\n",chosenRestaurant.getName() );
+                System.out.printf("|| Alamat   : %-52s ||\n",chosenRestaurant.getAddress() );
+                System.out.println("---------------------------------------------------------------------");
+                System.out.println("||           Pilih opsi di bawah dengan memasukkan angka           ||");
+                System.out.println("||                                                                 ||");
+                System.out.println("||   [1] Lihat Menu Makanan                                        ||");
+                System.out.println("||   [2] Lihat Menu Minuman                                        ||");
+                System.out.println("=====================================================================");
+                System.out.print("Masukkan pilihan menu berupa angka: ");
+                int menuChoice = Validation.validationTwoChoice();
 
-                if (!foods.isEmpty()) {
-                    System.out.println("Makanan:");
-                    for (Food food : foods) {
-                        System.out.println("ID: " + food.getID() + ", Nama: " + food.getName() + ", Harga: " + food.getPrice());
+                if(menuChoice == 1){
+                    ArrayList<Food> foods = chosenRestaurant.getFoods();
+                    Clear.screen();
+                    if (!foods.isEmpty()) {
+                        System.out.println("=====================================================================");
+                        System.out.println("||                        LIHAT MENU RESTORAN                      ||");
+                        System.out.printf ("|| > Restoran: %-52s||\n", chosenRestaurant.getName());
+                        System.out.printf ("|| > Alamat  : %-52s||\n", chosenRestaurant.getAddress());
+                        System.out.println("---------------------------------------------------------------------");
+                        System.out.println("|| ID MENU  |             NAMA MAKANAN             |      HARGA    ||");
+                        System.out.println("---------------------------------------------------------------------");
+                        for (Food food : foods) {
+                                System.out.printf("|| %-9s| %-37s| %-14s||\n", food.getID(), food.getName(), food.getPrice());
+                            }
+                            View.menuFooter();
+                    } else {
+                        System.out.println("Tidak ada makanan di restoran ini.");
                     }
-                } else {
-                    System.out.println("Tidak ada makanan di restoran ini.");
-                }
+    
+                } else if(menuChoice == 2){
+                    ArrayList<Drink> drinks = chosenRestaurant.getDrinks();
 
+                
                 if (!drinks.isEmpty()) {
                     System.out.println("Minuman:");
                     for (Drink drink : drinks) {
@@ -83,6 +110,9 @@ class Admin{
                 } else {
                     System.out.println("Tidak ada minuman di restoran ini.");
                 }
+                }
+
+                
             } else {
                 System.out.println("Restoran dengan ID tersebut tidak ditemukan.");
             }
@@ -124,7 +154,10 @@ class Admin{
                     double foodPrice = Validation.validationDouble();
                     Food food = new Food(foodName, foodPrice);
                     restaurant.addFood(food);
-
+                    System.out.println();
+                    View.succesMessageMenu();
+                    scanner.nextLine();
+                    Clear.screen();
                     break;
                 case 2:
                     System.out.print("Masukkan Nama Minuman: ");
@@ -133,6 +166,9 @@ class Admin{
                     double drinkPrice = Validation.validationDouble();
                     Drink drink = new Drink(drinkName, drinkPrice);
                     restaurant.addDrink(drink);
+                    System.out.println();
+                    View.succesMessageMenu();
+                    Clear.screen();
                     break;
                 case 0:
                     // Selesai
