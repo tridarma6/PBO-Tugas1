@@ -103,10 +103,17 @@ class Admin{
 
                 
                 if (!drinks.isEmpty()) {
-                    System.out.println("Minuman:");
+                    System.out.println("=====================================================================");
+                    System.out.println("||                        LIHAT MENU RESTORAN                      ||");
+                    System.out.printf ("|| > Restoran: %-52s||\n", chosenRestaurant.getName());
+                    System.out.printf ("|| > Alamat  : %-52s||\n", chosenRestaurant.getAddress());
+                    System.out.println("---------------------------------------------------------------------");
+                    System.out.println("|| ID MENU  |             NAMA MINUMAN             |      HARGA    ||");
+                    System.out.println("---------------------------------------------------------------------");
                     for (Drink drink : drinks) {
-                        System.out.println("ID: " + drink.getID() + ", Nama: " + drink.getName() + ", Harga: " + drink.getPrice());
+                        System.out.printf("|| %-9s| %-37s| %-14s||\n", drink.getID(), drink.getName(), drink.getPrice());
                     }
+                    View.menuFooter();
                 } else {
                     View.ThereIsNotDrinkInThisRestorant();
                 }
@@ -132,7 +139,7 @@ class Admin{
              }
          }
          if(!found){
-             System.out.println("Restorant dengan ID tersebut tidak ditemukan.");
+             View.notFoundIDResto();
              System.out.println();
          }
      }
