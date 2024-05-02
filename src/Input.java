@@ -49,7 +49,9 @@ class Input{
                 customerInput();
                 break;
             case 2:
-                
+                Customer.pickRestaurant();
+                scanner.nextLine();
+                customerInput();
                 break;
             case 3:
 

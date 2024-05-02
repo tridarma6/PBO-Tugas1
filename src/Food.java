@@ -9,4 +9,9 @@ public class Food extends Menu{
     public int getID(){
         return this.id;
     }
+
+    public String getName(){
+        return this.name;
+    }
+
 }
