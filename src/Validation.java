@@ -19,7 +19,7 @@ public class Validation {
         return nilaiAngka;
     }
     //validasi range 2 angka
-    public static int validationTwoChoice(){
+    public static int validationThreeChoice(){
         int nilaiAngka = 0;
         boolean valid = false;
         Scanner input = new Scanner(System.in);
@@ -30,6 +30,26 @@ public class Validation {
                     valid = true; // keluar dari loop jika pilihannya berada pada rentang itu
                 }else{
                     System.out.print("Masukkan tidak valid. Harap masukkan angka antara 0 - 2: ");
+                }
+            }catch(InputMismatchException e){
+                System.out.print("Masukkan tidak valid. Harap masukkan angka : ");
+                input.nextLine();
+                return validationThreeChoice();
+            }
+        }
+        return nilaiAngka;
+    }
+    public static int validationTwoChoice(){
+        int nilaiAngka = 0;
+        boolean valid = false;
+        Scanner input = new Scanner(System.in);
+        while(!valid){
+            try{
+                nilaiAngka = input.nextInt();
+                if(nilaiAngka > 0 && nilaiAngka <= 2){
+                    valid = true; // keluar dari loop jika pilihannya berada pada rentang itu
+                }else{
+                    System.out.print("Masukkan tidak valid. Harap masukkan angka antara 1 - 2: ");
                 }
             }catch(InputMismatchException e){
                 System.out.print("Masukkan tidak valid. Harap masukkan angka : ");

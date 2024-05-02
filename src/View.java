@@ -116,4 +116,22 @@ public class View {
         System.out.println("=====================================================================");
     }
     
+    public static void succesMessageMenu(){
+        System.out.println("=====================================================================");
+        System.out.println("||                      Menu Berhasil ditambahkan                  ||");
+        System.out.println("---------------------------------------------------------------------");
+        System.out.println("||             Tekan Enter Untuk Kembali Menambahkan Menu          ||");
+        System.out.println("=====================================================================");
+    }
+
+    public static void menuFooter() {
+        System.out.println("---------------------------------------------------------------------");
+        System.out.println("||                      Tekan Enter untuk kembali                  ||");
+        System.out.println("=====================================================================");
+    }
+    public static void restoFooter() {
+        System.out.println("---------------------------------------------------------------------");
+        System.out.println("||                      Tekan Enter untuk kembali                  ||");
+        System.out.println("=====================================================================");
+    }
 }

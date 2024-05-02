@@ -6,7 +6,7 @@ public class Login extends Account{
         
         View.tampilanLogin();
         System.out.print("Masukan pilihan :");
-        int userType = Validation.validationTwoChoice();
+        int userType = Validation.validationThreeChoice();
         
         if(userType == 1){
              Clear.screen();
@@ -67,10 +67,6 @@ public class Login extends Account{
             Clear.screen();
             login();
         }
-
-
-
-
         scanner.close();
     }
 }
