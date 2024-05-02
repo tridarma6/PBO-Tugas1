@@ -98,4 +98,19 @@ public class Validation {
         }
         return nilaiAngka;
     }
+
+    public static String validateString() {
+        Scanner scanner = new Scanner(System.in);
+        boolean inputValid = false;
+        String name = null;
+        while (!inputValid) {
+            inputValid = true;
+            name = scanner.nextLine();
+            if (name.isBlank()) {
+                System.out.print("Tidak boleh kosong. mohon masukan kembali: ");
+                inputValid = false;
+            }
+        }
+        return name;
+    }
 }

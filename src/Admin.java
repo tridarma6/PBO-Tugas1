@@ -12,9 +12,9 @@ class Admin{
         View.tambahRestoranHeader();
         Scanner scanner = new Scanner(System.in);
         System.out.print("Masukkan Nama Restoran: ");
-        String name = scanner.nextLine();
+        String name = Validation.validateString();
         System.out.print("Masukkan Alamat Restoran: ");
-        String address = scanner.nextLine();
+        String address = Validation.validateString();
         addRestoran(name, address);
         scanner.close();
     }
@@ -31,7 +31,7 @@ class Admin{
             addMenu(restaurant);
         } else {
             restaurants.add(restaurant);
-            System.out.println("Restoran berhasil ditambahkan!");
+            View.succesRestorantMenu();
             Input.apakahTambahRestoranLagi();
         }
      }
@@ -39,7 +39,7 @@ class Admin{
      //method view semua restaurant
      public static void viewRestaurants() {
         if (restaurants.isEmpty()) {
-            System.out.println("Tidak ada restoran yang tersedia.");
+            View.ThereIsNotRestorant();
         } else {
             System.out.println("=====================================================================");
             System.out.println("||                           DAFTAR RESTORAN                       ||");
@@ -95,7 +95,7 @@ class Admin{
                             }
                             View.menuFooter();
                     } else {
-                        System.out.println("Tidak ada makanan di restoran ini.");
+                        View.ThereIsNotFoodInThisRestorant();
                     }
     
                 } else if(menuChoice == 2){
@@ -103,18 +103,25 @@ class Admin{
 
                 
                 if (!drinks.isEmpty()) {
-                    System.out.println("Minuman:");
+                    System.out.println("=====================================================================");
+                    System.out.println("||                        LIHAT MENU RESTORAN                      ||");
+                    System.out.printf ("|| > Restoran: %-52s||\n", chosenRestaurant.getName());
+                    System.out.printf ("|| > Alamat  : %-52s||\n", chosenRestaurant.getAddress());
+                    System.out.println("---------------------------------------------------------------------");
+                    System.out.println("|| ID MENU  |             NAMA MINUMAN             |      HARGA    ||");
+                    System.out.println("---------------------------------------------------------------------");
                     for (Drink drink : drinks) {
-                        System.out.println("ID: " + drink.getID() + ", Nama: " + drink.getName() + ", Harga: " + drink.getPrice());
+                        System.out.printf("|| %-9s| %-37s| %-14s||\n", drink.getID(), drink.getName(), drink.getPrice());
                     }
+                    View.menuFooter();
                 } else {
-                    System.out.println("Tidak ada minuman di restoran ini.");
+                    View.ThereIsNotDrinkInThisRestorant();
                 }
                 }
 
                 
             } else {
-                System.out.println("Restoran dengan ID tersebut tidak ditemukan.");
+                View.notFoundIDResto();
             }
         }
     }
@@ -126,13 +133,13 @@ class Admin{
              if(restaurants.get(i).getId() == id){
                  restaurants.remove(i);
                  found = true;
-                 System.out.println("Restaurant Berhasil di hapus");  
+                 View.succesDeleteRestoran(); 
                  System.out.println();
                  break;
              }
          }
          if(!found){
-             System.out.println("Restorant dengan ID tersebut tidak ditemukan.");
+             View.notFoundIDResto();
              System.out.println();
          }
      }
@@ -149,7 +156,7 @@ class Admin{
                 case 1:
                     // Tambah makanan
                     System.out.print("Masukkan Nama Makanan: ");
-                    String foodName = scanner.nextLine();
+                    String foodName = Validation.validateString();
                     System.out.print("Masukkan Harga Makanan: ");
                     double foodPrice = Validation.validationDouble();
                     Food food = new Food(foodName, foodPrice);
@@ -161,7 +168,7 @@ class Admin{
                     break;
                 case 2:
                     System.out.print("Masukkan Nama Minuman: ");
-                    String drinkName = scanner.nextLine();
+                    String drinkName = Validation.validateString();
                     System.out.print("Masukkan Harga Minuman: ");
                     double drinkPrice = Validation.validationDouble();
                     Drink drink = new Drink(drinkName, drinkPrice);

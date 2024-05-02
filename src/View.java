@@ -124,6 +124,56 @@ public class View {
         System.out.println("=====================================================================");
     }
 
+    
+    public static void ThereIsNotFoodInThisRestorant(){
+        System.out.println("=====================================================================");
+        System.out.println("||                Tidak Ada Makanan di Restoran Ini                ||");
+        System.out.println("---------------------------------------------------------------------");
+        System.out.println("||             Tekan Enter Untuk Kembali Menambahkan Menu          ||");
+        System.out.println("=====================================================================");
+    }
+
+    public static void ThereIsNotDrinkInThisRestorant(){
+        System.out.println("=====================================================================");
+        System.out.println("||                Tidak Ada Minuman di Restoran Ini                ||");
+        System.out.println("---------------------------------------------------------------------");
+        System.out.println("||             Tekan Enter Untuk Kembali Menambahkan Menu          ||");
+        System.out.println("=====================================================================");
+    }
+
+    public static void ThereIsNotRestorant(){
+        System.out.println("=====================================================================");
+        System.out.println("||                 Tidak Ada Restoran yang Tersedia                ||");
+        System.out.println("---------------------------------------------------------------------");
+        System.out.println("||                 Tekan Enter Untuk Kembali ke Menu               ||");
+        System.out.println("=====================================================================");
+    }
+
+    public static void succesDeleteRestoran(){
+        System.out.println("=====================================================================");
+        System.out.println("||                      Restoran Berhasil Dihapus                  ||");
+        System.out.println("---------------------------------------------------------------------");
+        System.out.println("||                   Tekan Enter Untuk Kembali ke Menu             ||");
+        System.out.println("=====================================================================");
+    }
+
+    public static void notFoundIDResto(){
+        System.out.println("=====================================================================");
+        System.out.println("||          Restoran Dengan ID Tersebut Tidak Tersedia             ||");
+        System.out.println("---------------------------------------------------------------------");
+        System.out.println("||                Tekan Enter Untuk Kembali ke Menu                ||");
+        System.out.println("=====================================================================");
+    }
+
+    public static void succesRestorantMenu(){
+        System.out.println("=====================================================================");
+        System.out.println("||                     Restoran Berhasil ditambahkan               ||");
+        System.out.println("---------------------------------------------------------------------");
+        System.out.println("||                Tekan Enter Untuk Kembali ke Menu Admin          ||");
+        System.out.println("=====================================================================");
+    }
+
+
     public static void menuFooter() {
         System.out.println("---------------------------------------------------------------------");
         System.out.println("||                      Tekan Enter untuk kembali                  ||");
