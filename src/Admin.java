@@ -1,11 +1,10 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 class Admin{
-    public static ArrayList<Restaurant> restaurants; 
+    public static ArrayList<Restaurant> restaurants = new ArrayList<>(); 
  
     //constructor Admin
     public Admin(){
-        Admin.restaurants = new ArrayList<>();
     }
  
     public static void inputAddRestoran(){
@@ -25,14 +24,11 @@ class Admin{
         ArrayList<Food> food = new ArrayList<>();
         ArrayList<Drink> drink = new ArrayList<>();
         Restaurant restaurant = new Restaurant(name, address, food, drink);
-        Input inputMenu = new Input();
-        boolean addMenuDone = inputMenu.addMenu(restaurant);
+        boolean addMenuDone = addMenu(restaurant);
         if (!addMenuDone) {
-            System.out.println("Tidak dapat menambah restoran tanpa menu.");
-            System.out.println("Tekan enter untuk lanjut...");
             scanner.nextLine();
             Clear.screen();
-            inputMenu.addMenu(restaurant);
+            addMenu(restaurant);
         } else {
             restaurants.add(restaurant);
             System.out.println("Restoran berhasil ditambahkan!");
@@ -110,6 +106,48 @@ class Admin{
              System.out.println();
          }
      }
- 
+     public static boolean addMenu(Restaurant restaurant) {
+        
+        Scanner scanner = new Scanner(System.in);
+        int choice;
+        do {
+            Clear.screen();
+            View.addMenu();
+            System.out.print("Pilihan Anda: ");
+            choice = Validation.validationInteger();
+            switch (choice) {
+                case 1:
+                    // Tambah makanan
+                    System.out.print("Masukkan Nama Makanan: ");
+                    String foodName = scanner.nextLine();
+                    System.out.print("Masukkan Harga Makanan: ");
+                    double foodPrice = Validation.validationDouble();
+                    Food food = new Food(foodName, foodPrice);
+                    restaurant.addFood(food);
+
+                    break;
+                case 2:
+                    System.out.print("Masukkan Nama Minuman: ");
+                    String drinkName = scanner.nextLine();
+                    System.out.print("Masukkan Harga Minuman: ");
+                    double drinkPrice = Validation.validationDouble();
+                    Drink drink = new Drink(drinkName, drinkPrice);
+                    restaurant.addDrink(drink);
+                    break;
+                case 0:
+                    // Selesai
+                    Clear.screen();
+                    if (restaurant.getFoods().isEmpty() && restaurant.getDrinks().isEmpty()) {
+                        View.errorAddRestorantIfDontAddMenu();
+                        return false;
+                    }
+                    break;
+                default:
+                    System.out.println("Pilihan tidak valid.");
+                    break;
+            }
+        } while (choice != 0);
+        return true;
+    }
  }
  

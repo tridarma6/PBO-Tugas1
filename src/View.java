@@ -81,10 +81,10 @@ public class View {
         System.out.println("||                            Admin Menu                           ||");
         System.out.println("---------------------------------------------------------------------");
         System.out.println("||       Mohon masukkan restoran baru dengan informasi di bawah    ||");
-        System.out.println("||           ID Restoran, Nama Restoran, Alamat Restoran           ||");
+        System.out.println("||                  Nama Restoran, Alamat Restoran                 ||");
         System.out.println("=====================================================================");
     }
-    public static void addMenuAgain(){
+    public static void addRestorantAgain(){
         System.out.println("---------------------------------------------------------------------");
         System.out.println("||                   Restoran berhasil ditambahkan!                ||");
         System.out.println("---------------------------------------------------------------------");
@@ -94,4 +94,26 @@ public class View {
         System.out.println("=====================================================================");
         System.out.print("Masukan pilihan berupa angka: ");
     }
+
+    public static void addMenu(){
+        System.out.println("=====================================================================");
+        System.out.println("||                             Tambah Menu                         ||");
+        System.out.println("---------------------------------------------------------------------");
+        System.out.println("||           Pilih opsi di bawah dengan memasukkan angka           ||");
+        System.out.println("||                                                                 ||");
+        System.out.println("||   [1] Tambah Makanan                                            ||");
+        System.out.println("||   [2] Tambah Minuman                                            ||");
+        System.out.println("||   [0] Selesai                                                   ||");
+        System.out.println("=====================================================================");
+    }
+
+    public static void errorAddRestorantIfDontAddMenu(){
+        System.out.println("=====================================================================");
+        System.out.println("||                   Tidak Dapat Menambah Restoran                 ||");
+        System.out.println("---------------------------------------------------------------------");
+        System.out.println("||                Tolong Masukkan Menu Terlebih dahulu             ||");
+        System.out.println("||                      Tekan Enter Untuk Kembali                  ||");
+        System.out.println("=====================================================================");
+    }
+    
 }
