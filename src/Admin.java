@@ -12,9 +12,9 @@ class Admin{
         View.tambahRestoranHeader();
         Scanner scanner = new Scanner(System.in);
         System.out.print("Masukkan Nama Restoran: ");
-        String name = scanner.nextLine();
+        String name = Validation.validateString();
         System.out.print("Masukkan Alamat Restoran: ");
-        String address = scanner.nextLine();
+        String address = Validation.validateString();
         addRestoran(name, address);
         scanner.close();
     }
@@ -149,7 +149,7 @@ class Admin{
                 case 1:
                     // Tambah makanan
                     System.out.print("Masukkan Nama Makanan: ");
-                    String foodName = scanner.nextLine();
+                    String foodName = Validation.validateString();
                     System.out.print("Masukkan Harga Makanan: ");
                     double foodPrice = Validation.validationDouble();
                     Food food = new Food(foodName, foodPrice);
@@ -161,7 +161,7 @@ class Admin{
                     break;
                 case 2:
                     System.out.print("Masukkan Nama Minuman: ");
-                    String drinkName = scanner.nextLine();
+                    String drinkName = Validation.validateString();
                     System.out.print("Masukkan Harga Minuman: ");
                     double drinkPrice = Validation.validationDouble();
                     Drink drink = new Drink(drinkName, drinkPrice);
