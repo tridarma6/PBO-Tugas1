@@ -30,6 +30,7 @@ class Admin{
             Clear.screen();
             addMenu(restaurant);
         } else {
+            Clear.screen();
             restaurants.add(restaurant);
             View.succesRestorantMenu();
             Input.apakahTambahRestoranLagi();
@@ -114,6 +115,7 @@ class Admin{
 
                 
                 if (!drinks.isEmpty()) {
+                    Clear.screen();
                     System.out.println("=====================================================================");
                     System.out.println("||                        LIHAT MENU RESTORAN                      ||");
                     System.out.printf ("|| > Restoran: %-52s||\n", chosenRestaurant.getName());
@@ -126,12 +128,14 @@ class Admin{
                     }
                     View.menuFooter();
                 } else {
+                    Clear.screen();
                     View.ThereIsNotDrinkInThisRestorant();
                 }
                 }
 
                 
             } else {
+                Clear.screen();
                 View.notFoundIDResto();
             }
         }
@@ -150,6 +154,7 @@ class Admin{
              }
          }
          if(!found){
+            Clear.screen();
              View.notFoundIDResto();
              System.out.println();
          }
@@ -193,11 +198,13 @@ class Admin{
                     // Selesai
                     Clear.screen();
                     if (restaurant.getFoods().isEmpty() && restaurant.getDrinks().isEmpty()) {
+                        Clear.screen();
                         View.errorAddRestorantIfDontAddMenu();
                         return false;
                     }
                     break;
                 default:
+                Clear.screen();
                     System.out.println("Pilihan tidak valid.");
                     break;
             }
