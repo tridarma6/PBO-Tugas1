@@ -1,6 +1,4 @@
-import java.util.ArrayList;
-import java.util.Random;
-import java.util.Scanner;
+import java.util.*;
 
 public class Customer {
     public static Scanner scanner = new Scanner(System.in);
@@ -20,17 +18,18 @@ public class Customer {
             int quantity;
             ArrayList<Menu> menus = new ArrayList<>();
             View.tambahPesanan();
+            System.out.print("Masukan pilihan berupa angka: ");
             int categoryChoice = Validation.validationInteger();
 
             if (categoryChoice == 1) {
-                Clear.screen();
+                // Clear.screen();
                 menus = convertToMenuList(restaurant.getFoods());
             } else if (categoryChoice == 2) {
-                Clear.screen();
+                // Clear.screen();
                 menus = convertToMenuList( restaurant.getDrinks());
             }
             if (menus.isEmpty()) {
-                Clear.screen();
+                // Clear.screen();
                 View.ThereIsNotCategory();
                 continue;
             }
@@ -44,20 +43,22 @@ public class Customer {
             for (Menu menu : menus) {
                 System.out.printf("|| %-9s| %-37s| %-14s||\n", menu.getID(), menu.getName(), menu.getPrice());
             }
-            View.menuFooter();
+            View.footerStandar();
 
-            System.out.println("Masukan ID: ");
-            id = Validation.validationInteger();
 
-            System.out.println("Berapa banyak: ");
+                
+                System.out.print("Masukan ID Menu: ");
+                id = Validation.validationInteger();
+
+            System.out.print("Berapa banyak: ");
             quantity = Validation.validationInteger();
 
             addItemToOrders(restaurant, id, quantity, menus);
-
+            // Clear.screen();
             View.addItemLainnya();
-            System.out.println("Masukan pilihan: ");
+            System.out.print("Masukan pilihan berupa angka: ");
             choice = Validation.validationInteger();
-            Clear.screen();
+            // Clear.screen();
         }
 
         displayOrders();
@@ -70,26 +71,27 @@ public class Customer {
 
     private static void displayOrders() {
         int totalPrice = 0;
-        System.out.println("==============================================================================================================================");
-        System.out.println("||                                             D E T A I L   P E S A N A N                                                  ||");
-        System.out.println("------------------------------------------------------------------------------------------------------------------------------");
-        System.out.println("||         NAMA RESTORAN               |             NAMA MAKANAN             |      HARGA    |     JUMLAH    |   SUB TOTAL ||");
-        System.out.println("------------------------------------------------------------------------------------------------------------------------------");
+        System.out.println("========================================================================================");
+        System.out.println("||                            D E T A I L   P E S A N A N                             ||");
+        System.out.println("----------------------------------------------------------------------------------------");
+        System.out.println("||             NAMA MAKANAN             |      HARGA    |     JUMLAH    |   SUB TOTAL ||");
+        System.out.println("----------------------------------------------------------------------------------------");
         for (PurchaseOrders purchase : purchaseOrders) {
-            System.out.printf("|| %-37d| %-37d| %-14d| %-14d| %-14d||",purchase.getRestaurantName(), purchase.getMenu(), purchase.getPrice(), purchase.getQuantity(), purchase.getSubPrice());
+            System.out.printf("|| %-37s| %-14.1f| %-14d| %-12.1f||\n",purchase.getMenu(), purchase.getPrice(), purchase.getQuantity(), purchase.getSubPrice());
             totalPrice += purchase.getSubPrice();
         }
-        System.out.println("------------------------------------------------------------------------------------------------------------------------------");
-        System.out.printf("||                                       Tekan Enter untuk kembali                            |   TOTAL        | %-14d      ||",totalPrice);
-        System.out.println("==============================================================================================================================");
+        System.out.println("----------------------------------------------------------------------------------------");
+        System.out.printf("||         Tekan Enter untuk kembali                    |   TOTAL        | %-11d||\n",totalPrice);
+        System.out.println("========================================================================================");
+        // Clear.screen();
     }
     
     public static void checkOrder(){
-        Clear.screen();
         if(!purchaseOrders.isEmpty()){
             Random random = new Random();
-            System.out.println("==========================================================================================================================");
+            System.out.println("========================================================================================");
             System.out.println("||  Nama  :" + Account.customerName + "                                                                                   ||");
+            System.out.println("||  Nama Restaurant  :" + purchaseOrders.get(0).getRestaurantName() + "                                                                                   ||");
             System.out.println("||  Jarak :" + random.nextInt(1000) + " meter" + "                                                                  ||");
             displayOrders();
         }else{
@@ -97,7 +99,7 @@ public class Customer {
         }
     }
     public static void viewRestaurants() {
-        Clear.screen();
+        // Clear.screen();
         if (Admin.restaurants.isEmpty()) {
             View.ThereIsNotRestorant();
         } else {
@@ -109,12 +111,17 @@ public class Customer {
             for (Restaurant restaurant : Admin.restaurants) {
                 System.out.printf("|| %-9s| %-37s| %-14s||\n", restaurant.getId(), restaurant.getName(),restaurant.getAddress() );
             }
-            View.restoFooter();
+            View.footerStandar();
 
             // Meminta input pengguna untuk memilih restoran
+            
+            Scanner scanner = new Scanner(System.in);
+            
             System.out.print("Masukkan ID Restoran yang ingin dilihat menu: ");
             int chosenRestaurantId = Validation.validationInteger();
-
+            // Clear.screen();
+            
+            
             // Cari restoran yang dipilih oleh pengguna
             Restaurant chosenRestaurant = null;
             for (Restaurant restaurant : Admin.restaurants) {
@@ -123,14 +130,15 @@ public class Customer {
                     break;
                 }
             }
+        
 
             // Tampilkan menu jika restoran ditemukan
             if (chosenRestaurant != null) {
                 ArrayList<Food> foods = chosenRestaurant.getFoods();
                 ArrayList<Drink> drinks = chosenRestaurant.getDrinks();
 
-                if (!foods.isEmpty()) {
-                    Clear.screen();
+                if (!foods.isEmpty() || !drinks.isEmpty()) {
+                    // Clear.screen();
                     System.out.println("=====================================================================");
                     System.out.println("||                        LIHAT MENU RESTORAN                      ||");
                     System.out.printf ("|| > Restoran: %-52s||\n", chosenRestaurant.getName());
@@ -139,20 +147,8 @@ public class Customer {
                     System.out.println("|| ID MENU  |             NAMA MAKANAN             |      HARGA    ||");
                     System.out.println("---------------------------------------------------------------------");
                     for (Food food : foods) {
-                            System.out.printf("|| %-9s| %-37s| %-14s||\n", food.getID(), food.getName(), food.getPrice());
-                        }
-                        View.menuFooter();
-                } else {
-                    Clear.screen();
-                    View.ThereIsNotFoodInThisRestorant();
-                }
-
-                if (!drinks.isEmpty()) {
-                    Clear.screen();
-                    System.out.println("=====================================================================");
-                    System.out.println("||                        LIHAT MENU RESTORAN                      ||");
-                    System.out.printf ("|| > Restoran: %-52s||\n", chosenRestaurant.getName());
-                    System.out.printf ("|| > Alamat  : %-52s||\n", chosenRestaurant.getAddress());
+                        System.out.printf("|| %-9s| %-37s| %-14s||\n", food.getID(), food.getName(), food.getPrice());
+                    }
                     System.out.println("---------------------------------------------------------------------");
                     System.out.println("|| ID MENU  |             NAMA MINUMAN             |      HARGA    ||");
                     System.out.println("---------------------------------------------------------------------");
@@ -161,11 +157,29 @@ public class Customer {
                     }
                     View.menuFooter();
                 } else {
-                    Clear.screen();
-                    View.ThereIsNotDrinkInThisRestorant();
+                    // Clear.screen();
+                    View.ThereIsNotFoodInThisRestorant();
                 }
+
+                // if (!drinks.isEmpty()) {
+                    Clear.screen();
+                //     System.out.println("=====================================================================");
+                //     System.out.println("||                        LIHAT MENU RESTORAN                      ||");
+                //     System.out.printf ("|| > Restoran: %-52s||\n", chosenRestaurant.getName());
+                //     System.out.printf ("|| > Alamat  : %-52s||\n", chosenRestaurant.getAddress());
+                    // System.out.println("---------------------------------------------------------------------");
+                    // System.out.println("|| ID MENU  |             NAMA MINUMAN             |      HARGA    ||");
+                    // System.out.println("---------------------------------------------------------------------");
+                    // for (Drink drink : drinks) {
+                    //     System.out.printf("|| %-9s| %-37s| %-14s||\n", drink.getID(), drink.getName(), drink.getPrice());
+                    // }
+                //     View.menuFooter();
+                // } else {
+                    Clear.screen();
+                //     View.ThereIsNotDrinkInThisRestorant();
+                // }
             } else {
-                Clear.screen();
+                // Clear.screen();
                 View.notFoundIDResto();
             }
         }
@@ -173,10 +187,10 @@ public class Customer {
 
     public static void pickRestaurant(){
         if (Admin.restaurants.isEmpty()) {
-            Clear.screen();
+            // Clear.screen();
             View.ThereIsNotRestorant();
         } else {
-            Clear.screen();
+            // Clear.screen();
             System.out.println("=====================================================================");
             System.out.println("||                           DAFTAR RESTORAN                       ||");
             System.out.println("---------------------------------------------------------------------");
@@ -185,27 +199,31 @@ public class Customer {
             for (Restaurant restaurant : Admin.restaurants) {
                 System.out.printf("|| %-9s| %-37s| %-14s||\n", restaurant.getId(), restaurant.getName(),restaurant.getAddress() );
             }
-            View.restoFooter();
+            View.footerStandar();
             // Meminta input pengguna untuk memilih restoran
+            Scanner scanner = new Scanner(System.in);
+            
             System.out.print("Masukkan ID Restoran yang ingin dilihat menu: ");
             int chosenRestaurantId = Validation.validationInteger();
-
+            // Clear.screen();
+            
             // Cari restoran yang dipilih oleh pengguna
             Restaurant chosenRestaurant = null;
-            for (Restaurant restaurant : Admin.restaurants) {
-                if (restaurant.getId() == chosenRestaurantId) {
-                    chosenRestaurant = restaurant;
-                    break;
+                for (Restaurant restaurant : Admin.restaurants) {
+                    if (restaurant.getId() == chosenRestaurantId) {
+                        chosenRestaurant = restaurant;
+                        break;
+                    }
                 }
-            }
+
 
             // Tampilkan menu jika restoran ditemukan
             if (chosenRestaurant != null) {
                 ArrayList<Food> foods = chosenRestaurant.getFoods();
                 ArrayList<Drink> drinks = chosenRestaurant.getDrinks();
 
-                if (!foods.isEmpty()) {
-                    Clear.screen();
+                if (!foods.isEmpty() || !drinks.isEmpty()) {
+                    // Clear.screen();
                     System.out.println("=====================================================================");
                     System.out.println("||                        LIHAT MENU RESTORAN                      ||");
                     System.out.printf ("|| > Restoran: %-52s||\n", chosenRestaurant.getName());
@@ -216,48 +234,55 @@ public class Customer {
                     for (Food food : foods) {
                             System.out.printf("|| %-9s| %-37s| %-14s||\n", food.getID(), food.getName(), food.getPrice());
                         }
-                        View.menuFooter();
-                } else {
-                    Clear.screen();
-                   View.ThereIsNotFoodInThisRestorant();
-                }
-
-                if (!drinks.isEmpty()) {
-                    Clear.screen();
-                    System.out.println("=====================================================================");
-                    System.out.println("||                        LIHAT MENU RESTORAN                      ||");
-                    System.out.printf ("|| > Restoran: %-52s||\n", chosenRestaurant.getName());
-                    System.out.printf ("|| > Alamat  : %-52s||\n", chosenRestaurant.getAddress());
                     System.out.println("---------------------------------------------------------------------");
                     System.out.println("|| ID MENU  |             NAMA MINUMAN             |      HARGA    ||");
                     System.out.println("---------------------------------------------------------------------");
                     for (Drink drink : drinks) {
                         System.out.printf("|| %-9s| %-37s| %-14s||\n", drink.getID(), drink.getName(), drink.getPrice());
                     }
-                    View.menuFooter();
                 } else {
-                    Clear.screen();
-                    View.ThereIsNotDrinkInThisRestorant();
+                    // Clear.screen();
+                   View.ThereIsNotFoodInThisRestorant();
                 }
+
+                // if (!drinks.isEmpty()) {
+
+                //     // Clear.screen();
+                //     System.out.println("=====================================================================");
+                //     System.out.println("||                        LIHAT MENU RESTORAN                      ||");
+                //     System.out.printf ("|| > Restoran: %-52s||\n", chosenRestaurant.getName());
+                //     System.out.printf ("|| > Alamat  : %-52s||\n", chosenRestaurant.getAddress());
+                //     System.out.println("---------------------------------------------------------------------");
+                //     System.out.println("|| ID MENU  |             NAMA MINUMAN             |      HARGA    ||");
+                //     System.out.println("---------------------------------------------------------------------");
+                //     for (Drink drink : drinks) {
+                //         System.out.printf("|| %-9s| %-37s| %-14s||\n", drink.getID(), drink.getName(), drink.getPrice());
+                //     }
+                //     View.menuFooter();
+                // } else {
+                //     // Clear.screen();
+                //     View.ThereIsNotDrinkInThisRestorant();
+                // }
             } else {
-                Clear.screen();
+                // Clear.screen();
                View.notFoundIDResto();
             }
 
-            Clear.screen();
+            
             System.out.println("=====================================================================");
-            System.out.println("||       APAKAH ANDA INGIN MEMESAN DI RESTAURANT" + chosenRestaurant.getName() + "||");
+            System.out.printf("||         APAKAH ANDA INGIN MEMESAN DI RESTAURAN %-14s   ||\n",chosenRestaurant.getName());
             System.out.println("---------------------------------------------------------------------");
             System.out.println("||           Pilih opsi di bawah dengan memasukkan angka           ||");
             System.out.println("||                                                                 ||");
             System.out.println("||          [1] Iya                            [2] Tidak           ||");
-            System.out.println("=====================================================================");;
+            System.out.println("=====================================================================");
+            System.out.print("Masukan pilihan berupa angka : ");
             int choice = Validation.validationTwoChoice();
             if(choice == 1){
-                Clear.screen();
+                // Clear.screen();
                 addOrders(chosenRestaurant);
             }else{
-                Clear.screen();
+                // Clear.screen();
                 pickRestaurant();
             }
             

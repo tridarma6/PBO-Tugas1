@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 class Admin{
     public static ArrayList<Restaurant> restaurants = new ArrayList<>(); 
- 
+    
     //constructor Admin
     public Admin(){
     }
@@ -49,20 +49,31 @@ class Admin{
             for (Restaurant restaurant : restaurants) {
                 System.out.printf("|| %-9s| %-37s| %-14s||\n", restaurant.getId(), restaurant.getName(),restaurant.getAddress() );
             }
-            View.restoFooter();
-
-            System.out.print("Masukkan ID Restoran yang ingin dilihat menu: ");
-            int chosenRestaurantId = Validation.validationInteger();
-            Clear.screen();
-
-            // Cari restoran yang dipilih oleh pengguna
+            View.footerStandar();
+            boolean validId = false;
             Restaurant chosenRestaurant = null;
-            for (Restaurant restaurant : restaurants) {
-                if (restaurant.getId() == chosenRestaurantId) {
-                    chosenRestaurant = restaurant;
-                    break;
+            Scanner scanner = new Scanner(System.in);
+            do{
+                System.out.print("Masukkan ID Restoran yang ingin dilihat menu: ");
+                int chosenRestaurantId = Validation.validationInteger();
+                Clear.screen();
+                boolean restonotnull = false;
+                // Cari restoran yang dipilih oleh pengguna
+                for (Restaurant restaurant : restaurants) {
+                    if (restaurant.getId() == chosenRestaurantId) {
+                        // validId = true;
+                        restonotnull = true;
+                        chosenRestaurant = restaurant;
+                        break;
+                    }
                 }
-            }
+                if(!restonotnull){
+                    View.notFoundIDResto();
+                    scanner.nextLine();
+                    Clear.screen();
+                    viewRestaurants();
+                }
+            }while(validId);
 
             // Tampilkan menu jika restoran ditemukan
             if (chosenRestaurant != null) {
@@ -175,6 +186,7 @@ class Admin{
                     restaurant.addDrink(drink);
                     System.out.println();
                     View.succesMessageMenu();
+                    scanner.nextLine();
                     Clear.screen();
                     break;
                 case 0:

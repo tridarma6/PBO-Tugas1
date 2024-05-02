@@ -51,14 +51,13 @@ public class View {
         System.out.println("=====================================================================");
         System.out.println("||                            Admin Menu                           ||");
         System.out.println("---------------------------------------------------------------------");
-        System.out.println("||                 Pilih opsi dengan memasukkan angka              ||");
         System.out.println("||                                                                 ||");
         System.out.println("||   [1] Tambahkan Restoran baru                                   ||");
         System.out.println("||   [2] Lihat Restoran yang Ada                                   ||");
         System.out.println("||   [3] Hapus Restoran yang Ada                                   ||");
         System.out.println("||   [0] Kembali ke menu log in                                    ||");
         System.out.println("=====================================================================");
-        System.out.print("Pilihan Anda: ");
+        System.out.print("Pilihan opsi dengan memasukan aku: ");
     }
 
     public static void tampilanMenuCustomer() {
@@ -72,7 +71,7 @@ public class View {
         System.out.println("||   [3] Lihat Pesanan                                             ||");
         System.out.println("||   [0] Kembali ke menu log in                                    ||");
         System.out.println("=====================================================================");
-        System.out.print("Pilihan Anda: ");
+        System.out.print("Pilih opsi dengan memasukan angka: ");
     }
 
     public static void tambahRestoranHeader() {
@@ -99,7 +98,6 @@ public class View {
         System.out.println("=====================================================================");
         System.out.println("||                             Tambah Menu                         ||");
         System.out.println("---------------------------------------------------------------------");
-        System.out.println("||           Pilih opsi di bawah dengan memasukkan angka           ||");
         System.out.println("||                                                                 ||");
         System.out.println("||   [1] Tambah Makanan                                            ||");
         System.out.println("||   [2] Tambah Minuman                                            ||");
@@ -196,7 +194,6 @@ public class View {
         System.out.println("=====================================================================");
         System.out.println("||                      Tambah Item Lainnya                        ||");
         System.out.println("---------------------------------------------------------------------");
-        System.out.println("||           Pilih opsi di bawah dengan memasukkan angka           ||");
         System.out.println("||                                                                 ||");
         System.out.println("||          [1] Iya                            [2] Tidak           ||");
         System.out.println("=====================================================================");
@@ -206,10 +203,9 @@ public class View {
         System.out.println("=====================================================================");
         System.out.println("||                          Tambah Pesanan                         ||");
         System.out.println("---------------------------------------------------------------------");
-        System.out.println("||           Pilih opsi di bawah dengan memasukkan angka           ||");
         System.out.println("||                                                                 ||");
-        System.out.println("||   [1] Pesan Makanan                                            ||");
-        System.out.println("||   [2] Pesan Minuman                                            ||");
+        System.out.println("||   [1] Pesan Makanan                                             ||");
+        System.out.println("||   [2] Pesan Minuman                                             ||");
         System.out.println("=====================================================================");
     }
 
@@ -220,7 +216,16 @@ public class View {
         System.out.println("||                    Tekan Enter Untuk Kembali                    ||");
         System.out.println("=====================================================================");
     }
-
+    public static void footerStandar(){
+        System.out.println("=====================================================================");
+    }
+    public static void ThereIsNotIdInMenu(){
+        System.out.println("=====================================================================");
+        System.out.println("||                     Tidak Ada ID yang Sesuai                    ||");
+        System.out.println("---------------------------------------------------------------------");
+        System.out.println("||           Tekan Enter Untuk Kembali ke Menu Pesanan             ||");
+        System.out.println("=====================================================================");
+    }
 
     
 }

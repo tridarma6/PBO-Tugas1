@@ -2,6 +2,7 @@ import java.util.*;
 public class Login extends Account{
 
     public static void login(){
+
         Scanner scanner = new Scanner(System.in);
         
         View.tampilanLogin();
