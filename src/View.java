@@ -173,6 +173,13 @@ public class View {
         System.out.println("=====================================================================");
     }
 
+    public static void ThereIsNotCategory(){
+        System.out.println("=====================================================================");
+        System.out.println("||                 Tidak Ada Kategori yang Tersedia                ||");
+        System.out.println("---------------------------------------------------------------------");
+        System.out.println("||                 Tekan Enter Untuk Kembali ke Menu               ||");
+        System.out.println("=====================================================================");
+    }
 
     public static void menuFooter() {
         System.out.println("---------------------------------------------------------------------");
@@ -182,6 +189,16 @@ public class View {
     public static void restoFooter() {
         System.out.println("---------------------------------------------------------------------");
         System.out.println("||                      Tekan Enter untuk kembali                  ||");
+        System.out.println("=====================================================================");
+    }
+
+    public static void addItemLainnya(){
+        System.out.println("=====================================================================");
+        System.out.println("||                      Tambah Item Lainnya                        ||");
+        System.out.println("---------------------------------------------------------------------");
+        System.out.println("||           Pilih opsi di bawah dengan memasukkan angka           ||");
+        System.out.println("||                                                                 ||");
+        System.out.println("||          [1] Iya                            [2] Tidak           ||");
         System.out.println("=====================================================================");
     }
 
@@ -195,4 +212,15 @@ public class View {
         System.out.println("||   [2] Pesan Minuman                                            ||");
         System.out.println("=====================================================================");
     }
+
+    public static void emptyOrderData(){
+        System.out.println("=====================================================================");
+        System.out.println("||    Tidak terdapat data order, pesan terlebih dahulu ke menu     ||");
+        System.out.println("---------------------------------------------------------------------");
+        System.out.println("||                    Tekan Enter Untuk Kembali                    ||");
+        System.out.println("=====================================================================");
+    }
+
+
+    
 }
