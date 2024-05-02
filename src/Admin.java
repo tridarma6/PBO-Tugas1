@@ -1,11 +1,11 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 class Admin{
-    private static ArrayList<Restaurant> restaurants; 
+    public static ArrayList<Restaurant> restaurants; 
  
     //constructor Admin
     public Admin(){
-        this.restaurants = new ArrayList<>();
+        Admin.restaurants = new ArrayList<>();
     }
  
     public static void inputAddRestoran(){
@@ -41,7 +41,7 @@ class Admin{
      }
  
      //method view semua restaurant
-     public void viewRestaurants() {
+     public static void viewRestaurants() {
         if (restaurants.isEmpty()) {
             System.out.println("Tidak ada restoran yang tersedia.");
         } else {
@@ -94,7 +94,7 @@ class Admin{
     }
 
      //method untuk delete restorant berdasarkan id
-     public void deleteRestaurant(int id){
+     public static void deleteRestaurant(int id){
          boolean found = false;
          for(int i = 0; i < restaurants.size(); i++){
              if(restaurants.get(i).getId() == id){

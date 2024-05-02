@@ -1,47 +1,31 @@
-import java.util.ArrayList;
 import java.util.Scanner;
 
 class Input{
-    private static Admin admin = new Admin();
-    private ArrayList<Restaurant> restaurants;
 
-    public Input(){
-        this.restaurants = new ArrayList<>();
-    }
-    
-    public static void input(){
-        //membuat object admin
-        //test
-        // admin.addRestoran(1, "Restoran Ayam gepuk", "Jalan gunung");
-        // admin.addRestoran(2, "Restoran Gaco", "Jalan Jimbo");
+    public static void inputAdmin(){
         Scanner scanner = new Scanner(System.in);
         View.tampilanMenu();
         int choice;
         choice = Validation.validationFourChoice();
         switch(choice){
             case 1:
-                Clear.screen();
                 View.tambahRestoranHeader();
                 Admin.inputAddRestoran();
-                Clear.screen();
-                input();
+                inputAdmin();
                 break;
             case 2:
-                admin.viewRestaurants();
+                Admin.viewRestaurants();
                 scanner.nextLine();
-                Clear.screen();
-                input();
+                inputAdmin();
                 break;
             case 3:
                 System.out.println("Masukkan ID Restoran yang akan dihapus : ");
                 int idDelete = Validation.validationInteger();
-                admin.deleteRestaurant(idDelete);
-                scanner.nextLine();
-                Clear.screen(); 
-                input();
+                Admin.deleteRestaurant(idDelete);
+                scanner.nextLine(); 
+                inputAdmin();
                 break;
             case 0:
-                Clear.screen();
                 Login.login();
                 break;
         }
@@ -52,45 +36,45 @@ class Input{
         
         Scanner scanner = new Scanner(System.in);
         int choice;
-        System.out.println("\nMenu:");
-        System.out.println("1. Tambah Makanan");
-        System.out.println("2. Tambah Minuman");
-        System.out.println("0. Selesai");
-        System.out.print("Pilihan Anda: ");
-        choice = Validation.validationInteger();
-
-        switch (choice) {
-            case 1:
-                // Tambah makanan
-                
-                System.out.print("Masukkan Nama Makanan: ");
-                String foodName = scanner.nextLine();
-                System.out.print("Masukkan Harga Makanan: ");
-                double foodPrice = Validation.validationDouble();
-                Food food = new Food(foodName, foodPrice);
-                restaurant.addFood(food);
-                break;
-            case 2:
-                scanner.nextLine(); // Membuang newline character
-                System.out.print("Masukkan Nama Minuman: ");
-                String drinkName = scanner.nextLine();
-                System.out.print("Masukkan Harga Minuman: ");
-                double drinkPrice = Validation.validationDouble();
-                Drink drink = new Drink(drinkName, drinkPrice);
-                restaurant.addDrink(drink);
-                break;
-            case 0:
-                
-                // Selesai
-                if (restaurant.getFoods().isEmpty() && restaurant.getDrinks().isEmpty()) {
-                    System.out.println("Tidak dapat menambah restoran tanpa menu.");
-                    return false;
-                }
-                break;
-            default:
-                System.out.println("Pilihan tidak valid.");
-        }
-        
+        do {
+            System.out.println("\nMenu:");
+            System.out.println("1. Tambah Makanan");
+            System.out.println("2. Tambah Minuman");
+            System.out.println("0. Selesai");
+            System.out.print("Pilihan Anda: ");
+            choice = Validation.validationInteger();
+            switch (choice) {
+                case 1:
+                    // Tambah makanan
+                    
+                    System.out.print("Masukkan Nama Makanan: ");
+                    String foodName = scanner.nextLine();
+                    System.out.print("Masukkan Harga Makanan: ");
+                    double foodPrice = Validation.validationDouble();
+                    Food food = new Food(foodName, foodPrice);
+                    restaurant.addFood(food);
+                    break;
+                case 2:
+                    scanner.nextLine(); // Membuang newline character
+                    System.out.print("Masukkan Nama Minuman: ");
+                    String drinkName = scanner.nextLine();
+                    System.out.print("Masukkan Harga Minuman: ");
+                    double drinkPrice = Validation.validationDouble();
+                    Drink drink = new Drink(drinkName, drinkPrice);
+                    restaurant.addDrink(drink);
+                    break;
+                case 0:
+                    
+                    // Selesai
+                    if (restaurant.getFoods().isEmpty() && restaurant.getDrinks().isEmpty()) {
+                        System.out.println("Tidak dapat menambah restoran tanpa menu.");
+                        return false;
+                    }
+                    break;
+                default:
+                    System.out.println("Pilihan tidak valid.");
+            }
+        } while (choice != 0);
         return true;
     }
 
@@ -100,15 +84,19 @@ class Input{
         int choice = Validation.validationFourChoice();
         switch (choice) {
             case 1:
-                Clear.screen();
+                Customer.viewRestaurants();
+                scanner.nextLine();
+                customerInput();
                 break;
             case 2:
-                Clear.screen();
+
                 break;
             case 3:
-                Clear.screen();
+
+                break;
             case 0:
-                Clear.screen();
+
+                break;
             default:
                 break;
         }
@@ -120,8 +108,7 @@ class Input{
         if(choice == 1){
             Admin.inputAddRestoran();
         }else{
-             Clear.screen();
-            input();
+            inputAdmin();
         }
     }
 }

@@ -33,7 +33,7 @@ public class Login extends Account{
             View.loggedInGreetingAdmin(adminName);
             scanner.nextLine();
              Clear.screen();
-            Input.input();
+            Input.inputAdmin();
         } else {
              Clear.screen();
             View.errorLogin();
@@ -55,15 +55,16 @@ public class Login extends Account{
         System.out.print("Masukkan password Anda: ");
         String password = scanner.nextLine();
         if (username.equals(CUSTOMER_USERNAME) && password.equals(CUSTOMER_PASSWORD)) {
-             Clear.screen();
+            Clear.screen();
             View.loggedInGreetingCustomer(customerName);
             scanner.nextLine();
-             Clear.screen();
+            Clear.screen();
+            Input.customerInput();
         } else {
-             Clear.screen();
+            Clear.screen();
             View.errorLogin();
             scanner.nextLine();
-             Clear.screen();
+            Clear.screen();
             login();
         }
 
