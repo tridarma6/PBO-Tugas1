@@ -18,7 +18,9 @@ public class Restaurant {
         this.id = nextID;
         nextID++;
     }
-
+    public String getNameByID(int id){
+        return name;
+    }
     public String getName() {
         return name;
     }
