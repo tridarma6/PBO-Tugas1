@@ -31,7 +31,7 @@ class Admin{
             addMenu(restaurant);
         } else {
             restaurants.add(restaurant);
-            System.out.println("Restoran berhasil ditambahkan!");
+            View.succesRestorantMenu();
             Input.apakahTambahRestoranLagi();
         }
      }
@@ -39,7 +39,7 @@ class Admin{
      //method view semua restaurant
      public static void viewRestaurants() {
         if (restaurants.isEmpty()) {
-            System.out.println("Tidak ada restoran yang tersedia.");
+            View.ThereIsNotRestorant();
         } else {
             System.out.println("=====================================================================");
             System.out.println("||                           DAFTAR RESTORAN                       ||");
@@ -95,7 +95,7 @@ class Admin{
                             }
                             View.menuFooter();
                     } else {
-                        System.out.println("Tidak ada makanan di restoran ini.");
+                        View.ThereIsNotFoodInThisRestorant();
                     }
     
                 } else if(menuChoice == 2){
@@ -108,13 +108,13 @@ class Admin{
                         System.out.println("ID: " + drink.getID() + ", Nama: " + drink.getName() + ", Harga: " + drink.getPrice());
                     }
                 } else {
-                    System.out.println("Tidak ada minuman di restoran ini.");
+                    View.ThereIsNotDrinkInThisRestorant();
                 }
                 }
 
                 
             } else {
-                System.out.println("Restoran dengan ID tersebut tidak ditemukan.");
+                View.notFoundIDResto();
             }
         }
     }
@@ -126,7 +126,7 @@ class Admin{
              if(restaurants.get(i).getId() == id){
                  restaurants.remove(i);
                  found = true;
-                 System.out.println("Restaurant Berhasil di hapus");  
+                 View.succesDeleteRestoran(); 
                  System.out.println();
                  break;
              }
