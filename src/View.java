@@ -159,7 +159,7 @@ public class View {
 
     public static void notFoundIDResto(){
         System.out.println("=====================================================================");
-        System.out.println("||          Restoran Dengan ID Tersebut Tidak Tersedia             ||");
+        System.out.println("||            Restoran Dengan ID Tersebut Tidak Tersedia           ||");
         System.out.println("---------------------------------------------------------------------");
         System.out.println("||                Tekan Enter Untuk Kembali ke Menu                ||");
         System.out.println("=====================================================================");
@@ -182,6 +182,17 @@ public class View {
     public static void restoFooter() {
         System.out.println("---------------------------------------------------------------------");
         System.out.println("||                      Tekan Enter untuk kembali                  ||");
+        System.out.println("=====================================================================");
+    }
+
+    public static void tambahPesanan(){
+        System.out.println("=====================================================================");
+        System.out.println("||                          Tambah Pesanan                         ||");
+        System.out.println("---------------------------------------------------------------------");
+        System.out.println("||           Pilih opsi di bawah dengan memasukkan angka           ||");
+        System.out.println("||                                                                 ||");
+        System.out.println("||   [1] Pesan Makanan                                            ||");
+        System.out.println("||   [2] Pesan Minuman                                            ||");
         System.out.println("=====================================================================");
     }
 }

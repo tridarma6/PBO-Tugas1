@@ -18,10 +18,8 @@ public class Customer {
             int id;
             int quantity;
             ArrayList<Menu> menus = new ArrayList<>();
-            System.out.println("Mau pesan makanan atau minuman?");
-            System.out.println("1. Makanan");
-            System.out.println("2. Minuman");
-            int categoryChoice = scanner.nextInt();
+            View.tambahPesanan();
+            int categoryChoice = Validation.validationInteger();
 
             if (categoryChoice == 1) {
                 menus = convertToMenuList(restaurant.getFoods());
