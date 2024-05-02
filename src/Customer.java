@@ -22,14 +22,14 @@ public class Customer {
             int categoryChoice = Validation.validationInteger();
 
             if (categoryChoice == 1) {
-                // Clear.screen();
+                Clear.screen();
                 menus = convertToMenuList(restaurant.getFoods());
             } else if (categoryChoice == 2) {
-                // Clear.screen();
+                Clear.screen();
                 menus = convertToMenuList( restaurant.getDrinks());
             }
             if (menus.isEmpty()) {
-                // Clear.screen();
+                Clear.screen();
                 View.ThereIsNotCategory();
                 continue;
             }
@@ -54,11 +54,11 @@ public class Customer {
             quantity = Validation.validationInteger();
 
             addItemToOrders(restaurant, id, quantity, menus);
-            // Clear.screen();
+            Clear.screen();
             View.addItemLainnya();
             System.out.print("Masukan pilihan berupa angka: ");
             choice = Validation.validationInteger();
-            // Clear.screen();
+            Clear.screen();
         }
 
         displayOrders();
@@ -83,23 +83,24 @@ public class Customer {
         System.out.println("----------------------------------------------------------------------------------------");
         System.out.printf("||         Tekan Enter untuk kembali                    |   TOTAL        | %-11d||\n",totalPrice);
         System.out.println("========================================================================================");
-        // Clear.screen();
+        scanner.nextLine();
     }
     
     public static void checkOrder(){
+        Clear.screen();
         if(!purchaseOrders.isEmpty()){
             Random random = new Random();
             System.out.println("========================================================================================");
-            System.out.println("||  Nama  :" + Account.customerName + "                                                                                   ||");
-            System.out.println("||  Nama Restaurant  :" + purchaseOrders.get(0).getRestaurantName() + "                                                                                   ||");
-            System.out.println("||  Jarak :" + random.nextInt(1000) + " meter" + "                                                                  ||");
+            System.out.printf("||  Nama  : %-25s                                                 ||\n", Account.customerName);
+            System.out.printf("||  Nama Restaurant  : %-25s                                      ||\n", purchaseOrders.get(0).getRestaurantName());
+            System.out.printf("||  Jarak : %-26d                                                ||\n",random.nextInt(1000));
             displayOrders();
         }else{
             View.emptyOrderData();
         }
     }
     public static void viewRestaurants() {
-        // Clear.screen();
+        Clear.screen();
         if (Admin.restaurants.isEmpty()) {
             View.ThereIsNotRestorant();
         } else {
@@ -119,7 +120,7 @@ public class Customer {
             
             System.out.print("Masukkan ID Restoran yang ingin dilihat menu: ");
             int chosenRestaurantId = Validation.validationInteger();
-            // Clear.screen();
+            Clear.screen();
             
             
             // Cari restoran yang dipilih oleh pengguna
@@ -187,10 +188,10 @@ public class Customer {
 
     public static void pickRestaurant(){
         if (Admin.restaurants.isEmpty()) {
-            // Clear.screen();
+            Clear.screen();
             View.ThereIsNotRestorant();
         } else {
-            // Clear.screen();
+            Clear.screen();
             System.out.println("=====================================================================");
             System.out.println("||                           DAFTAR RESTORAN                       ||");
             System.out.println("---------------------------------------------------------------------");
@@ -205,7 +206,7 @@ public class Customer {
             
             System.out.print("Masukkan ID Restoran yang ingin dilihat menu: ");
             int chosenRestaurantId = Validation.validationInteger();
-            // Clear.screen();
+            Clear.screen();
             
             // Cari restoran yang dipilih oleh pengguna
             Restaurant chosenRestaurant = null;
@@ -223,7 +224,7 @@ public class Customer {
                 ArrayList<Drink> drinks = chosenRestaurant.getDrinks();
 
                 if (!foods.isEmpty() || !drinks.isEmpty()) {
-                    // Clear.screen();
+                    Clear.screen();
                     System.out.println("=====================================================================");
                     System.out.println("||                        LIHAT MENU RESTORAN                      ||");
                     System.out.printf ("|| > Restoran: %-52s||\n", chosenRestaurant.getName());
@@ -241,7 +242,7 @@ public class Customer {
                         System.out.printf("|| %-9s| %-37s| %-14s||\n", drink.getID(), drink.getName(), drink.getPrice());
                     }
                 } else {
-                    // Clear.screen();
+                    Clear.screen();
                    View.ThereIsNotFoodInThisRestorant();
                 }
 
@@ -264,7 +265,7 @@ public class Customer {
                 //     View.ThereIsNotDrinkInThisRestorant();
                 // }
             } else {
-                // Clear.screen();
+                Clear.screen();
                View.notFoundIDResto();
             }
 
@@ -279,10 +280,10 @@ public class Customer {
             System.out.print("Masukan pilihan berupa angka : ");
             int choice = Validation.validationTwoChoice();
             if(choice == 1){
-                // Clear.screen();
+                Clear.screen();
                 addOrders(chosenRestaurant);
             }else{
-                // Clear.screen();
+                Clear.screen();
                 pickRestaurant();
             }
             

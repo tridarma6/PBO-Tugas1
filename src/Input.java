@@ -44,16 +44,19 @@ class Input{
         int choice = Validation.validationFourChoice();
         switch (choice) {
             case 1:
+                Clear.screen();
                 Customer.viewRestaurants();
                 scanner.nextLine();
                 customerInput();
                 break;
             case 2:
+                Clear.screen();
                 Customer.pickRestaurant();
                 scanner.nextLine();
                 customerInput();
                 break;
             case 3:
+                // Clear.screen();
                 Customer.checkOrder();
                 scanner.nextLine();
                 customerInput();
