@@ -1,7 +1,7 @@
 # PBO-Tugas1
 
 # Program Pemesanan Makanan Online
-Om Swastyastu ,Hi! Ini adalah proyek kecil untuk pemesanan makanan online demi menuntaskan Tugas I PBO KAMI.
+Hi! Ini adalah proyek kecil untuk pemesanan makanan online demi menuntaskan Tugas I PBO KAMI.
 
 Program Java ini dirancang untuk dua jenis user dengan akses yang berbeda, yaitu:
 1. Admin diberikan akses untuk melihat restoran, menambahkan restoran, dan menghapus restoran.
@@ -10,7 +10,7 @@ Program Java ini dirancang untuk dua jenis user dengan akses yang berbeda, yaitu
 Program ini juga dilengkapi dengan input validasi pada class Input untuk memastikan pengguna memberikan input yang sesuai dengan yang dibutuhkan oleh program.
 
 Di bawah ini adalah deskripsi program, penjelasan dari bagaimana program akan dijalankan, dan UML dari program ini. Untuk deskripsi kode lebih lengkap dapat dilihat pada kode program yang sudah dicommit sebelumnya (sudah disertakan beberapa comment untuk membantu dalam mengerti cara kerja program). Selamat menyimak :>
-Om Santih Santih Santih Om
+
 
 # Identitas Kami
 * Nama  : Putu Rifki Dirkayuda
