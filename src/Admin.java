@@ -43,12 +43,12 @@ class Admin{
             View.ThereIsNotRestorant();
         } else {
             System.out.println("=====================================================================");
-            System.out.println("||                           DAFTAR RESTORAN                       ||");
+            System.out.println("||                     DAFTAR RESTORAN                             ||");
             System.out.println("---------------------------------------------------------------------");
-            System.out.println("|| ID       |             NAMA RESTORAN            |      ALAMAT   ||");
+            System.out.println("|| ID       |  NAMA RESTORAN |                  ALAMAT             ||");
             System.out.println("---------------------------------------------------------------------");
             for (Restaurant restaurant : restaurants) {
-                System.out.printf("|| %-9s| %-37s| %-14s||\n", restaurant.getId(), restaurant.getName(),restaurant.getAddress() );
+                System.out.printf("|| %-9s| %-15s| %-36s||\n", restaurant.getId(), restaurant.getName(),restaurant.getAddress() );
             }
             View.footerStandar();
             boolean validId = false;
@@ -144,12 +144,13 @@ class Admin{
      //method untuk delete restorant berdasarkan id
      public static void deleteRestaurant(int id){
          boolean found = false;
+
+         View.footerStandar();
          for(int i = 0; i < restaurants.size(); i++){
              if(restaurants.get(i).getId() == id){
                  restaurants.remove(i);
                  found = true;
                  View.succesDeleteRestoran(); 
-                 System.out.println();
                  break;
              }
          }

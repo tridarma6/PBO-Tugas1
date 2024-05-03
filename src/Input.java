@@ -3,6 +3,7 @@ import java.util.Scanner;
 class Input{
 
     public static void inputAdmin(){
+        Clear.screen();
         Scanner scanner = new Scanner(System.in);
         View.tampilanMenu();
         int choice;
@@ -22,8 +23,27 @@ class Input{
                 break;
             case 3:
                 Clear.screen();
-                System.out.println("Masukkan ID Restoran yang akan dihapus : ");
-                int idDelete = Validation.validationInteger();
+                System.out.println("=====================================================================");
+                System.out.println("||                     DAFTAR RESTORAN                             ||");
+                System.out.println("---------------------------------------------------------------------");
+                System.out.println("|| ID       |  NAMA RESTORAN |                  ALAMAT             ||");
+                System.out.println("---------------------------------------------------------------------");
+                for (Restaurant restaurant : Admin.restaurants) {
+                    System.out.printf("|| %-9s| %-15s| %-36s||\n", restaurant.getId(), restaurant.getName(),restaurant.getAddress() );
+                }
+                View.footerStandar();
+                int idDelete;
+                while(true){
+                    System.out.println("Masukkan ID Restoran yang akan dihapus : ");
+                    idDelete = Validation.validationInteger();
+                    if(idDelete < 1 || idDelete > Admin.restaurants.size()){
+                        View.ThereIsNotRestorant();
+                        scanner.nextLine();
+                        Clear.screen();
+                    }else{
+                        break;
+                    }
+                }
                 Admin.deleteRestaurant(idDelete);
                 scanner.nextLine(); 
                 inputAdmin();

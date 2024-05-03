@@ -105,22 +105,20 @@ public class Customer {
             View.ThereIsNotRestorant();
         } else {
             System.out.println("=====================================================================");
-            System.out.println("||                           DAFTAR RESTORAN                       ||");
+            System.out.println("||                     DAFTAR RESTORAN                             ||");
             System.out.println("---------------------------------------------------------------------");
-            System.out.println("|| ID       |             NAMA RESTORAN            |      ALAMAT   ||");
+            System.out.println("|| ID       |  NAMA RESTORAN |                  ALAMAT             ||");
             System.out.println("---------------------------------------------------------------------");
             for (Restaurant restaurant : Admin.restaurants) {
-                System.out.printf("|| %-9s| %-37s| %-14s||\n", restaurant.getId(), restaurant.getName(),restaurant.getAddress() );
+                System.out.printf("|| %-9s| %-15s| %-36s||\n", restaurant.getId(), restaurant.getName(),restaurant.getAddress() );
             }
             View.footerStandar();
 
             // Meminta input pengguna untuk memilih restoran
             
-            Scanner scanner = new Scanner(System.in);
-            
             System.out.print("Masukkan ID Restoran yang ingin dilihat menu: ");
             int chosenRestaurantId = Validation.validationInteger();
-            Clear.screen();
+            
             
             
             // Cari restoran yang dipilih oleh pengguna
@@ -163,7 +161,7 @@ public class Customer {
                 }
 
                 // if (!drinks.isEmpty()) {
-                    Clear.screen();
+                    
                 //     System.out.println("=====================================================================");
                 //     System.out.println("||                        LIHAT MENU RESTORAN                      ||");
                 //     System.out.printf ("|| > Restoran: %-52s||\n", chosenRestaurant.getName());
@@ -176,7 +174,7 @@ public class Customer {
                     // }
                 //     View.menuFooter();
                 // } else {
-                    Clear.screen();
+                    
                 //     View.ThereIsNotDrinkInThisRestorant();
                 // }
             } else {
@@ -193,12 +191,12 @@ public class Customer {
         } else {
             Clear.screen();
             System.out.println("=====================================================================");
-            System.out.println("||                           DAFTAR RESTORAN                       ||");
+            System.out.println("||                     DAFTAR RESTORAN                             ||");
             System.out.println("---------------------------------------------------------------------");
-            System.out.println("|| ID       |             NAMA RESTORAN            |      ALAMAT   ||");
+            System.out.println("|| ID       |  NAMA RESTORAN |                  ALAMAT             ||");
             System.out.println("---------------------------------------------------------------------");
             for (Restaurant restaurant : Admin.restaurants) {
-                System.out.printf("|| %-9s| %-37s| %-14s||\n", restaurant.getId(), restaurant.getName(),restaurant.getAddress() );
+                System.out.printf("|| %-9s| %-15s| %-36s||\n", restaurant.getId(), restaurant.getName(),restaurant.getAddress() );
             }
             View.footerStandar();
             // Meminta input pengguna untuk memilih restoran
