@@ -100,7 +100,8 @@ Gambar di atas merupakan detail dari pesanan yang telah di buat oleh customer.
 
 # Riwayat Pesanan
 ![gambar](https://github.com/tridarma6/PBO-Tugas1/assets/146802115/de25fb09-d703-4a31-8a90-72b1579d2ca8)
-Customer dapat melihat pesanan yang sebelumnya dilakukan dengan memilih pilihan 3
+Customer dapat melihat pesanan yang sebelumnya dilakukan dengan memilih pilihan
+
 
 
 
